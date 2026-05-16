@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "historical": {
+      "HISTORICAL00": {
+        "country": "s1e",
+        "province": [],
+        "timeline": {},
+        "id": "HISTORICAL00"
+      },
+      "HISTORICAL01": {
+        "country": "s3c",
+        "province": [],
+        "timeline": {},
+        "id": "HISTORICAL01"
+      },
+      "HISTORICAL02": {
+        "country": "s5a",
+        "province": [],
+        "timeline": {},
+        "id": "HISTORICAL02"
+      }
+    }
+  },
+  "new": {
+    "historical": {
+      "historical_ref01": {
+        "country": "s78",
+        "province": [],
+        "timeline": {}
+      }
+    }
+  }
+}

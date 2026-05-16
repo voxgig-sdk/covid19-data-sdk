@@ -1,0 +1,81 @@
+# Entity: historical
+
+main: kit: entity: historical: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "timeline"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "historical"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "USA"
+                kind: "param"
+                name: "id"
+                orig: "country"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "all"
+                kind: "query"
+                name: "lastday"
+                orig: "lastday"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/historical/{country}"
+          parts: [
+            "historical"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              country: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+              "lastday"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

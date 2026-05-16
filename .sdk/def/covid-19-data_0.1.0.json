@@ -1,0 +1,253 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "COVID-19 Data API",
+    "description": "This API provides comprehensive data on COVID-19 cases, deaths, and recoveries across various dates, offering users access to historical trends and real-time statistics. Users can query the API for specific dates or cumulative figures to analyze the impact of the pandemic over time.",
+    "version": "3.0.0",
+    "contact": {
+      "url": "https://disease.sh"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://disease.sh/v3/covid-19",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/historical/all": {
+      "get": {
+        "summary": "Get global historical COVID-19 data",
+        "description": "Returns historical COVID-19 data for all countries combined, including cases, deaths, and recoveries over time. Data can be filtered by the number of days.",
+        "operationId": "getHistoricalAll",
+        "tags": [
+          "Historical"
+        ],
+        "parameters": [
+          {
+            "name": "lastdays",
+            "in": "query",
+            "description": "Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "30",
+              "example": "all"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with historical COVID-19 data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricalAllResponse"
+                },
+                "example": {
+                  "cases": {
+                    "1/22/20": 557,
+                    "1/23/20": 657,
+                    "1/24/20": 944,
+                    "1/25/20": 1437
+                  },
+                  "deaths": {
+                    "1/22/20": 17,
+                    "1/23/20": 18,
+                    "1/24/20": 26,
+                    "1/25/20": 42
+                  },
+                  "recovered": {
+                    "1/22/20": 30,
+                    "1/23/20": 32,
+                    "1/24/20": 36,
+                    "1/25/20": 39
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/historical/{country}": {
+      "get": {
+        "summary": "Get historical COVID-19 data for a specific country",
+        "description": "Returns historical COVID-19 data for a specific country, including cases, deaths, and recoveries over time.",
+        "operationId": "getHistoricalCountry",
+        "tags": [
+          "Historical"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "description": "Country name or ISO code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "USA"
+            }
+          },
+          {
+            "name": "lastdays",
+            "in": "query",
+            "description": "Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "30",
+              "example": "all"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with country historical data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricalCountryResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Country not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HistoricalAllResponse": {
+        "type": "object",
+        "description": "Historical COVID-19 data for all countries combined",
+        "properties": {
+          "cases": {
+            "type": "object",
+            "description": "Historical cases data with dates as keys and case counts as values",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1/22/20": 557,
+              "1/23/20": 657
+            }
+          },
+          "deaths": {
+            "type": "object",
+            "description": "Historical deaths data with dates as keys and death counts as values",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1/22/20": 17,
+              "1/23/20": 18
+            }
+          },
+          "recovered": {
+            "type": "object",
+            "description": "Historical recovered data with dates as keys and recovery counts as values",
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "1/22/20": 30,
+              "1/23/20": 32
+            }
+          }
+        }
+      },
+      "HistoricalCountryResponse": {
+        "type": "object",
+        "description": "Historical COVID-19 data for a specific country",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "Country name",
+            "example": "USA"
+          },
+          "province": {
+            "type": "array",
+            "description": "List of provinces/states if applicable",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timeline": {
+            "type": "object",
+            "properties": {
+              "cases": {
+                "type": "object",
+                "description": "Historical cases data",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "deaths": {
+                "type": "object",
+                "description": "Historical deaths data",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "recovered": {
+                "type": "object",
+                "description": "Historical recovered data",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "description": "Error response",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Invalid parameter"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Historical",
+      "description": "Historical COVID-19 data endpoints"
+    }
+  ]
+}

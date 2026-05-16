@@ -1,0 +1,65 @@
+# Entity: all
+
+main: kit: entity: all: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cas"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "death"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "recovered"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "all"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "all"
+                kind: "query"
+                name: "lastday"
+                orig: "lastday"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/historical/all"
+          parts: [
+            "historical"
+            "all"
+          ]
+          select: {
+            exist: [
+              "lastday"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

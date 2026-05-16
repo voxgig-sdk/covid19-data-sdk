@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://disease.sh"
+      }
+      description: "This API provides comprehensive data on COVID-19 cases, deaths, and recoveries across various dates, offering users access to historical trends and real-time statistics. Users can query the API for specific dates or cumulative figures to analyze the impact of the pandemic over time."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://disease.sh/v3/covid-19"
+        }
+      ]
+      title: "COVID-19 Data API"
+      version: "3.0.0"
+    }
+  }
+}
+
+}
