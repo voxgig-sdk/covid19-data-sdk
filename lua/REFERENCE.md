@@ -95,7 +95,7 @@ local all = client:All(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cas` | ``$OBJECT`` | No |  |
+| `case` | ``$OBJECT`` | No |  |
 | `death` | ``$OBJECT`` | No |  |
 | `recovered` | ``$OBJECT`` | No |  |
 

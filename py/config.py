@@ -30,7 +30,7 @@ def make_config():
       "all": {
         "fields": [
           {
-            "name": "cas",
+            "name": "case",
             "req": False,
             "type": "`$OBJECT`",
             "active": True,

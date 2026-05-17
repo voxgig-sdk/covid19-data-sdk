@@ -6,7 +6,7 @@ main: kit: entity: all: {
 
   fields: [
     {
-      name: "cas"
+      name: "case"
       req: false
       type: "`$OBJECT`"
     }

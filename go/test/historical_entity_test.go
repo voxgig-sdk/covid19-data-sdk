@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/covid19-data-sdk"
-	"github.com/voxgig-sdk/covid19-data-sdk/core"
+	sdk "github.com/voxgig-sdk/covid19-data-sdk/go"
+	"github.com/voxgig-sdk/covid19-data-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/covid19-data-sdk/go/utility/struct"
 )
 
 func TestHistoricalEntity(t *testing.T) {

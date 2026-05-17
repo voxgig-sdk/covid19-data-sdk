@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/covid19-data-sdk"
-	"github.com/voxgig-sdk/covid19-data-sdk/core"
+	sdk "github.com/voxgig-sdk/covid19-data-sdk/go"
+	"github.com/voxgig-sdk/covid19-data-sdk/go/core"
 )
 
 func TestAllDirect(t *testing.T) {

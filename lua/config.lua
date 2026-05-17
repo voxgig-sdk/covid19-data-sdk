@@ -29,7 +29,7 @@ local function make_config()
       ["all"] = {
         ["fields"] = {
           {
-            ["name"] = "cas",
+            ["name"] = "case",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["active"] = true,

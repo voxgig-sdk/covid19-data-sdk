@@ -35,7 +35,7 @@ class Covid19DataConfig
         'all' => [
           'fields' => [
             [
-              'name' => 'cas',
+              'name' => 'case',
               'req' => false,
               'type' => '`$OBJECT`',
               'active' => true,

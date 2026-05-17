@@ -29,7 +29,7 @@ func MakeConfig() map[string]any {
 			"all": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "cas",
+						"name": "case",
 						"req": false,
 						"type": "`$OBJECT`",
 						"active": true,

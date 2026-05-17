@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/covid19-data-sdk/core"
+	"github.com/voxgig-sdk/covid19-data-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

@@ -62,7 +62,7 @@ class Config {
     "all": {
       "fields": [
         {
-          "name": "cas",
+          "name": "case",
           "req": false,
           "type": "`$OBJECT`",
           "active": true,

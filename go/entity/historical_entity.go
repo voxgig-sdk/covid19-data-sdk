@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/covid19-data-sdk/core"
+	"github.com/voxgig-sdk/covid19-data-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/covid19-data-sdk/go/utility/struct"
 )
 
 type HistoricalEntity struct {

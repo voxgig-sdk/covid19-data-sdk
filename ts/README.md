@@ -249,7 +249,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `cas` |  |
+| `case` |  |
 | `death` |  |
 | `recovered` |  |
 
@@ -288,7 +288,7 @@ Create an instance: `const all = client.All()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cas` | ``$OBJECT`` |  |
+| `case` | ``$OBJECT`` |  |
 | `death` | ``$OBJECT`` |  |
 | `recovered` | ``$OBJECT`` |  |
 

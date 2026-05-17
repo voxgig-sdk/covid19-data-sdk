@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/covid19-data-sdk/go/utility/struct"
 )
 
 type Covid19DataSDK struct {
