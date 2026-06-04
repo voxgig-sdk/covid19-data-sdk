@@ -117,7 +117,6 @@ func historicalBasicSetup(extra map[string]any) *entityTestSetup {
 		"COVID__DATA_TEST_HISTORICAL_ENTID": idmap,
 		"COVID__DATA_TEST_LIVE":      "FALSE",
 		"COVID__DATA_TEST_EXPLAIN":   "FALSE",
-		"COVID__DATA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["COVID__DATA_TEST_HISTORICAL_ENTID"])
@@ -128,7 +127,6 @@ func historicalBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["COVID__DATA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["COVID__DATA_APIKEY"],
 			},
 			extra,
 		})

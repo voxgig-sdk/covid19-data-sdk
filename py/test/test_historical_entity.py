@@ -91,7 +91,6 @@ def _historical_basic_setup(extra):
         "COVID__DATA_TEST_HISTORICAL_ENTID": idmap,
         "COVID__DATA_TEST_LIVE": "FALSE",
         "COVID__DATA_TEST_EXPLAIN": "FALSE",
-        "COVID__DATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _historical_basic_setup(extra):
     if env.get("COVID__DATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COVID__DATA_APIKEY"),
             },
             extra or {},
         ])

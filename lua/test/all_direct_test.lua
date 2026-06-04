@@ -62,14 +62,12 @@ function all_direct_setup(mockres)
   local env = runner.env_override({
     ["COVID__DATA_TEST_ALL_ENTID"] = {},
     ["COVID__DATA_TEST_LIVE"] = "FALSE",
-    ["COVID__DATA_APIKEY"] = "NONE",
   })
 
   local live = env["COVID__DATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["COVID__DATA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

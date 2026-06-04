@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { Covid19DataSDK } from 'covid19-data'
 
-const client = new Covid19DataSDK({
-  apikey: process.env.COVID19-DATA_APIKEY,
-})
+const client = new Covid19DataSDK({})
 ```
 
 ### 3. Load a all
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new Covid19DataSDK({ apikey: '...' })
+const client = new Covid19DataSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new Covid19DataSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 COVID19-DATA_TEST_LIVE=TRUE
-COVID19-DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new Covid19DataSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new Covid19DataSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
