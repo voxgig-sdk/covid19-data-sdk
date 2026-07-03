@@ -10,7 +10,7 @@ The Lua SDK for the Covid19Data API — an entity-oriented client using Lua conv
 
 ## Install
 ```bash
-luarocks install covid19-data-sdk
+luarocks install voxgig-sdk-covid19-data
 ```
 
 If the module is not yet published, add the source directory to

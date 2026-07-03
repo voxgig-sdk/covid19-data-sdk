@@ -10,13 +10,13 @@ The Ruby SDK for the Covid19Data API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install covid19-data-sdk
+gem install voxgig-sdk-covid19-data
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "covid19-data-sdk"
+gem "voxgig-sdk-covid19-data"
 ```
 
 Then run:

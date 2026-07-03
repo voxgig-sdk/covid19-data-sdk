@@ -10,7 +10,7 @@ The TypeScript SDK for the Covid19Data API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install covid19-data
+npm install @voxgig-sdk/covid19-data
 ```
 ## Tutorial: your first API call
 

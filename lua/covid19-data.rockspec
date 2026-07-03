@@ -8,12 +8,14 @@ source = {
   dir = "covid19-data-sdk/lua"
 }
 description = {
-  summary = "Covid19Data SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the COVID-19 Data public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/covid19-data-sdk",
+  issues_url = "https://github.com/voxgig-sdk/covid19-data-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "covid19-data" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

@@ -10,7 +10,7 @@ The PHP SDK for the Covid19Data API — an entity-oriented client using PHP conv
 
 ## Install
 ```bash
-composer require voxgig/covid19-data-sdk
+composer require voxgig-sdk/covid19-data
 ```
 
 

@@ -10,7 +10,7 @@ The Python SDK for the Covid19Data API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install covid19-data-sdk
+pip install voxgig-sdk-covid19-data
 ```
 
 Or install from source:
