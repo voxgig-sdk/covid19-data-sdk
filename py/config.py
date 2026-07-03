@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://disease.sh/v3/covid-19",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -27,43 +30,45 @@ def make_config():
       "all": {
         "fields": [
           {
+            "active": True,
             "name": "case",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "death",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "recovered",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 2,
           },
         ],
         "name": "all",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "all",
                       "kind": "query",
                       "name": "lastday",
                       "orig": "lastday",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -82,11 +87,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -97,54 +100,56 @@ def make_config():
       "historical": {
         "fields": [
           {
+            "active": True,
             "name": "country",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "province",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "timeline",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 2,
           },
         ],
         "name": "historical",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "USA",
                       "kind": "param",
                       "name": "id",
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "all",
                       "kind": "query",
                       "name": "lastday",
                       "orig": "lastday",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -169,11 +174,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

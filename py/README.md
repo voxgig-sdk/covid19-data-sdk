@@ -1,6 +1,11 @@
 # Covid19Data Python SDK
 
-The Python SDK for the Covid19Data API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the Covid19Data API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from covid19data_sdk import Covid19DataSDK
 
-client = Covid19DataSDK({})
+client = Covid19DataSDK({
+    "apikey": os.environ.get("COVID19-DATA_APIKEY"),
+})
 ```
 
 ### 3. Load a all
 
 ```python
-result, err = client.All(None).load({"id": "example_id"}, None)
+result, err = client.All().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -79,11 +87,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = Covid19DataSDK.test(None, None)
+client = Covid19DataSDK.test()
 
-result, err = client.Covid19Data(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.Covid19Data().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -114,6 +120,7 @@ Create a `.env.local` file at the project root:
 
 ```
 COVID19-DATA_TEST_LIVE=TRUE
+COVID19-DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -137,6 +144,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

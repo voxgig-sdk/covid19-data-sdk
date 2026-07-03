@@ -85,6 +85,7 @@ function historical_basic_setup($extra)
         "COVID__DATA_TEST_HISTORICAL_ENTID" => $idmap,
         "COVID__DATA_TEST_LIVE" => "FALSE",
         "COVID__DATA_TEST_EXPLAIN" => "FALSE",
+        "COVID__DATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function historical_basic_setup($extra)
     if ($env["COVID__DATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["COVID__DATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

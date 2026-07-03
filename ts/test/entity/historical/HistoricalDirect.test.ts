@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'COVID__DATA_TEST_HISTORICAL_ENTID': {},
     'COVID__DATA_TEST_LIVE': 'FALSE',
+    'COVID__DATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.COVID__DATA_TEST_LIVE
 
   if (live) {
     const client = new Covid19DataSDK({
+      apikey: env.COVID__DATA_APIKEY,
     })
 
     let idmap: any = env['COVID__DATA_TEST_HISTORICAL_ENTID']

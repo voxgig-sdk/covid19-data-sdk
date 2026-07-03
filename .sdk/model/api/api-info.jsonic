@@ -16,30 +16,7 @@ main: {
       ]
       title: "COVID-19 Data API"
       version: "3.0.0"
-      tagline: "Query aggregated COVID-19 case, death, and recovery figures with current totals and historical time series"
-      homepage: "https://disease.sh"
-      docs_url: "https://disease.sh/docs"
-      license_short: "Free public API; see project repository for terms and data-source attributions"
-      license_md: `- Free to use; disease.sh aggregates and republishes data from multiple upstream providers (e.g. Johns Hopkins CSSE, Worldometers, NYT and others depending on endpoint).
-- Attribution to disease.sh and the underlying data sources is expected when republishing.
-- Treat figures as best-effort reporting; upstream sources have varied over time and accuracy can vary by country and date.
-- Terms of service and the full source list are maintained in the disease.sh GitHub project.`
-      about_md: `The COVID-19 Data API is part of [disease.sh](https://disease.sh), an open "Open Disease Data API" that aggregates pandemic statistics from multiple public sources and serves them as JSON. It has been one of the most widely used community endpoints for COVID-19 dashboards and bots.
-
-What you get from the API:
-
-- Worldwide aggregate totals (cases, deaths, recoveries, active, tests) via the \`all\` endpoint.
-- Historical time-series of cumulative case, death and recovery counts by date via the \`historical\` endpoint.
-- JSON responses with no authentication required.
-
-The pandemic-emergency phase has long since ended, so this SDK is most useful for retrospective analysis, dashboards, and teaching examples. Some upstream feeds (notably Johns Hopkins CSSE) stopped publishing daily updates in 2023, so figures for recent dates may be stale or frozen; treat the data as historical unless an endpoint is verified to still be updating.
-
-No API key is required and responses are CORS-friendly, which is why disease.sh is commonly used directly from browser apps.`
-      entity_desc: {
-        all: "Global aggregate snapshot of COVID-19 totals (cases, deaths, recovered, active, tests and derived per-million figures) at the `/v3/covid-19/all` path."
-        historical: "Historical time-series of cumulative case, death and recovery counts by date, available globally and per country/province via the `/v3/covid-19/historical` path family."
-      }
-      auth: false
     }
   }
 }
+

@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://disease.sh/v3/covid-19',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -58,43 +62,45 @@ class Config {
     "all": {
       "fields": [
         {
+          "active": true,
           "name": "case",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "death",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "recovered",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "all",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "all",
                     "kind": "query",
                     "name": "lastday",
                     "orig": "lastday",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -113,11 +119,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -128,54 +132,56 @@ class Config {
     "historical": {
       "fields": [
         {
+          "active": true,
           "name": "country",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "province",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "timeline",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "historical",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "USA",
                     "kind": "param",
                     "name": "id",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
+                    "active": true,
                     "example": "all",
                     "kind": "query",
                     "name": "lastday",
                     "orig": "lastday",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -200,11 +206,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

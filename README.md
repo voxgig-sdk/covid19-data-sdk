@@ -1,22 +1,8 @@
 # Covid19Data SDK
 
-Query aggregated COVID-19 case, death, and recovery figures with current totals and historical time series
+COVID-19 Data API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About COVID-19 Data API
-
-The COVID-19 Data API is part of [disease.sh](https://disease.sh), an open "Open Disease Data API" that aggregates pandemic statistics from multiple public sources and serves them as JSON. It has been one of the most widely used community endpoints for COVID-19 dashboards and bots.
-
-What you get from the API:
-
-- Worldwide aggregate totals (cases, deaths, recoveries, active, tests) via the `all` endpoint.
-- Historical time-series of cumulative case, death and recovery counts by date via the `historical` endpoint.
-- JSON responses with no authentication required.
-
-The pandemic-emergency phase has long since ended, so this SDK is most useful for retrospective analysis, dashboards, and teaching examples. Some upstream feeds (notably Johns Hopkins CSSE) stopped publishing daily updates in 2023, so figures for recent dates may be stale or frozen; treat the data as historical unless an endpoint is verified to still be updating.
-
-No API key is required and responses are CORS-friendly, which is why disease.sh is commonly used directly from browser apps.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install covid19-data-sdk
 luarocks install covid19-data-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { Covid19DataSDK } from 'covid19-data'
 
-const client = new Covid19DataSDK({})
+const client = new Covid19DataSDK({
+  apikey: process.env.COVID19-DATA_APIKEY,
+})
 
+// Load all data
+const all = await client.All().load({})
+console.log(all.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **All** | Global aggregate snapshot of COVID-19 totals (cases, deaths, recovered, active, tests and derived per-million figures) at the `/v3/covid-19/all` path. | `/historical/all` |
-| **Historical** | Historical time-series of cumulative case, death and recovery counts by date, available globally and per country/province via the `/v3/covid-19/historical` path family. | `/historical/{country}` |
+| **All** |  | `/historical/all` |
+| **Historical** |  | `/historical/{country}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from covid19data_sdk import Covid19DataSDK
 
-client = Covid19DataSDK({})
+client = Covid19DataSDK({
+    "apikey": os.environ.get("COVID19-DATA_APIKEY"),
+})
 
 
 # Load a specific all
-all, err = client.All(None).load(
-    {"id": "example_id"}, None
-)
+all, err = client.All().load({"id": "example_id"})
+print(all)
 ```
 
 ### PHP
@@ -128,13 +120,14 @@ all, err = client.All(None).load(
 <?php
 require_once 'covid19data_sdk.php';
 
-$client = new Covid19DataSDK([]);
+$client = new Covid19DataSDK([
+    "apikey" => getenv("COVID19-DATA_APIKEY"),
+]);
 
 
 // Load a specific all
-[$all, $err] = $client->All(null)->load(
-    ["id" => "example_id"], null
-);
+[$all, $err] = $client->All()->load(["id" => "example_id"]);
+print_r($all);
 ```
 
 ### Golang
@@ -142,8 +135,13 @@ $client = new Covid19DataSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/covid19-data-sdk/go"
 
-client := sdk.NewCovid19DataSDK(map[string]any{})
+client := sdk.NewCovid19DataSDK(map[string]any{
+    "apikey": os.Getenv("COVID19-DATA_APIKEY"),
+})
 
+// Load all data
+all, err := client.All(nil).Load(map[string]any{}, nil)
+fmt.Println(all)
 ```
 
 ### Ruby
@@ -151,13 +149,14 @@ client := sdk.NewCovid19DataSDK(map[string]any{})
 ```ruby
 require_relative "Covid19Data_sdk"
 
-client = Covid19DataSDK.new({})
+client = Covid19DataSDK.new({
+  "apikey" => ENV["COVID19-DATA_APIKEY"],
+})
 
 
 # Load a specific all
-all, err = client.All(nil).load(
-  { "id" => "example_id" }, nil
-)
+all, err = client.All().load({ "id" => "example_id" })
+puts all
 ```
 
 ### Lua
@@ -165,13 +164,14 @@ all, err = client.All(nil).load(
 ```lua
 local sdk = require("covid19-data_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("COVID19-DATA_APIKEY"),
+})
 
 
 -- Load a specific all
-local all, err = client:All(nil):load(
-  { id = "example_id" }, nil
-)
+local all, err = client:All():load({ id = "example_id" })
+print(all)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +190,21 @@ const result = await client.All().load({ id: 'test01' })
 ### Python
 
 ```python
-client = Covid19DataSDK.test(None, None)
-result, err = client.All(None).load(
-    {"id": "test01"}, None
-)
+client = Covid19DataSDK.test()
+result, err = client.All().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = Covid19DataSDK::test(null, null);
-[$result, $err] = $client->All(null)->load(
-    ["id" => "test01"], null
-);
+$client = Covid19DataSDK::test();
+[$result, $err] = $client->All()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.All(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +213,15 @@ result, err := client.All(nil).Load(
 ### Ruby
 
 ```ruby
-client = Covid19DataSDK.test(nil, nil)
-result, err = client.All(nil).load(
-  { "id" => "test01" }, nil
-)
+client = Covid19DataSDK.test
+result, err = client.All().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:All(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:All():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,16 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the COVID-19 Data API
-
-- Upstream: [https://disease.sh](https://disease.sh)
-- API docs: [https://disease.sh/docs](https://disease.sh/docs)
-
-- Free to use; disease.sh aggregates and republishes data from multiple upstream providers (e.g. Johns Hopkins CSSE, Worldometers, NYT and others depending on endpoint).
-- Attribution to disease.sh and the underlying data sources is expected when republishing.
-- Treat figures as best-effort reporting; upstream sources have varied over time and accuracy can vary by country and date.
-- Terms of service and the full source list are maintained in the disease.sh GitHub project.
 
 ---
 

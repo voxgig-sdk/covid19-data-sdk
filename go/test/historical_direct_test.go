@@ -110,12 +110,14 @@ func historicalDirectSetup(mockres any) *historicalDirectSetupResult {
 	env := envOverride(map[string]any{
 		"COVID__DATA_TEST_HISTORICAL_ENTID": map[string]any{},
 		"COVID__DATA_TEST_LIVE":    "FALSE",
+		"COVID__DATA_APIKEY":       "NONE",
 	})
 
 	live := env["COVID__DATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["COVID__DATA_APIKEY"],
 		}
 		client := sdk.NewCovid19DataSDK(mergedOpts)
 

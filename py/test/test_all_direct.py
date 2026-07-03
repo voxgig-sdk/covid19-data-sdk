@@ -59,12 +59,14 @@ def _all_direct_setup(mockres):
     env = runner.env_override({
         "COVID__DATA_TEST_ALL_ENTID": {},
         "COVID__DATA_TEST_LIVE": "FALSE",
+        "COVID__DATA_APIKEY": "NONE",
     })
 
     live = env.get("COVID__DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("COVID__DATA_APIKEY"),
         }
         client = Covid19DataSDK(merged_opts)
         return {
