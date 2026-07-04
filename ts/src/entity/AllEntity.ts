@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  All,
+  AllLoadMatch,
+} from '../Covid19DataTypes'
 
 // TODO: needs Entity superclass
-class AllEntity extends Covid19DataEntityBase {
+class AllEntity extends Covid19DataEntityBase<All> {
 
   constructor(client: Covid19DataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AllEntity extends Covid19DataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AllLoadMatch, ctrl?: Control): Promise<All> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AllEntity extends Covid19DataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<All> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

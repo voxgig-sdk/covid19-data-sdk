@@ -85,6 +85,27 @@ func (e *HistoricalEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Historical; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *HistoricalEntity) DataTyped(data ...Historical) Historical {
+	if len(data) > 0 {
+		return typedFrom[Historical](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Historical](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Historical (all fields
+// optional at the wire level).
+func (e *HistoricalEntity) MatchTyped(match ...Historical) Historical {
+	if len(match) > 0 {
+		return typedFrom[Historical](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Historical](e.Match())
+}
+
 
 func (e *HistoricalEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *HistoricalEntity) Load(reqmatch map[string]any, ctrl map[string]any) (a
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// HistoricalLoadMatch and returns an Historical. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *HistoricalEntity) LoadTyped(reqmatch HistoricalLoadMatch, ctrl map[string]any) (Historical, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Historical{}, err
+	}
+	return typedFrom[Historical](res), nil
 }
 
 

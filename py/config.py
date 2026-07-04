@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://disease.sh/v3/covid-19",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -139,6 +136,7 @@ def make_config():
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

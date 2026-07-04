@@ -1,7 +1,13 @@
 # Covid19Data SDK Historical entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from covid19data_types import (
+    Historical,
+    HistoricalLoadMatch,
+)
 
 
 class HistoricalEntity:
@@ -44,7 +50,7 @@ class HistoricalEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Historical:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class HistoricalEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Historical:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: HistoricalLoadMatch, ctrl=None) -> Historical:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

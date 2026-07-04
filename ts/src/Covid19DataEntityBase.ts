@@ -15,7 +15,9 @@ import type {
 
 
 // TODO: needs Entity superclass
-class Covid19DataEntityBase {
+// `D` is the entity's typed data model (e.g. Advice); subclasses bind it via
+// `class AdviceEntity extends Covid19DataEntityBase<Advice>`.
+class Covid19DataEntityBase<D = any> {
   name = ''
   name_ = ''
   Name = ''
@@ -58,7 +60,7 @@ class Covid19DataEntityBase {
   }
 
 
-  data(this: any, data?: any) {
+  data(this: any, data?: Partial<D>): D {
     const struct = this._utility.struct
     const featureHook = this._utility.featureHook
 
@@ -74,7 +76,7 @@ class Covid19DataEntityBase {
   }
 
 
-  match(match?: any) {
+  match(this: any, match?: Partial<D>): Partial<D> {
     const struct = this._utility.struct
     const featureHook = this._utility.featureHook
 

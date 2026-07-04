@@ -49,8 +49,7 @@ class AllEntityTest extends TestCase
         // LOAD
         $all_ref01_ent = $client->All(null);
         $all_ref01_match_dt0 = [];
-        [$all_ref01_data_dt0_loaded, $err] = $all_ref01_ent->load($all_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $all_ref01_data_dt0_loaded = $all_ref01_ent->load($all_ref01_match_dt0, null);
         $this->assertNotNull($all_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function all_basic_setup($extra)
         "COVID__DATA_TEST_ALL_ENTID" => $idmap,
         "COVID__DATA_TEST_LIVE" => "FALSE",
         "COVID__DATA_TEST_EXPLAIN" => "FALSE",
-        "COVID__DATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function all_basic_setup($extra)
     if ($env["COVID__DATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COVID__DATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

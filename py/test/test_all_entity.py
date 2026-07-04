@@ -49,8 +49,7 @@ class TestAllEntity:
         # LOAD
         all_ref01_ent = client.All(None)
         all_ref01_match_dt0 = {}
-        all_ref01_data_dt0_loaded, err = all_ref01_ent.load(all_ref01_match_dt0, None)
-        assert err is None
+        all_ref01_data_dt0_loaded = all_ref01_ent.load(all_ref01_match_dt0, None)
         assert all_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _all_basic_setup(extra):
         "COVID__DATA_TEST_ALL_ENTID": idmap,
         "COVID__DATA_TEST_LIVE": "FALSE",
         "COVID__DATA_TEST_EXPLAIN": "FALSE",
-        "COVID__DATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _all_basic_setup(extra):
     if env.get("COVID__DATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COVID__DATA_APIKEY"),
             },
             extra or {},
         ])

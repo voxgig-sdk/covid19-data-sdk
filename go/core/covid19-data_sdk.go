@@ -245,11 +245,17 @@ func (sdk *Covid19DataSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// All returns a All entity bound to this client.
+// Idiomatic usage: client.All(nil).List(nil, nil) or
+// client.All(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *Covid19DataSDK) All(data map[string]any) Covid19DataEntity {
 	return NewAllEntityFunc(sdk, data)
 }
 
 
+// Historical returns a Historical entity bound to this client.
+// Idiomatic usage: client.Historical(nil).List(nil, nil) or
+// client.Historical(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *Covid19DataSDK) Historical(data map[string]any) Covid19DataEntity {
 	return NewHistoricalEntityFunc(sdk, data)
 }

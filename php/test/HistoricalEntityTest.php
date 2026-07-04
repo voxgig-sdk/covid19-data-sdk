@@ -49,8 +49,7 @@ class HistoricalEntityTest extends TestCase
         // LOAD
         $historical_ref01_ent = $client->Historical(null);
         $historical_ref01_match_dt0 = [];
-        [$historical_ref01_data_dt0_loaded, $err] = $historical_ref01_ent->load($historical_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $historical_ref01_data_dt0_loaded = $historical_ref01_ent->load($historical_ref01_match_dt0, null);
         $this->assertNotNull($historical_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function historical_basic_setup($extra)
         "COVID__DATA_TEST_HISTORICAL_ENTID" => $idmap,
         "COVID__DATA_TEST_LIVE" => "FALSE",
         "COVID__DATA_TEST_EXPLAIN" => "FALSE",
-        "COVID__DATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function historical_basic_setup($extra)
     if ($env["COVID__DATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COVID__DATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

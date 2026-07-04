@@ -42,8 +42,7 @@ class HistoricalEntityTest < Minitest::Test
     # LOAD
     historical_ref01_ent = client.Historical(nil)
     historical_ref01_match_dt0 = {}
-    historical_ref01_data_dt0_loaded, err = historical_ref01_ent.load(historical_ref01_match_dt0, nil)
-    assert_nil err
+    historical_ref01_data_dt0_loaded = historical_ref01_ent.load(historical_ref01_match_dt0, nil)
     assert !historical_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def historical_basic_setup(extra)
     "COVID__DATA_TEST_HISTORICAL_ENTID" => idmap,
     "COVID__DATA_TEST_LIVE" => "FALSE",
     "COVID__DATA_TEST_EXPLAIN" => "FALSE",
-    "COVID__DATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def historical_basic_setup(extra)
   if env["COVID__DATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COVID__DATA_APIKEY"],
       },
       extra || {},
     ])

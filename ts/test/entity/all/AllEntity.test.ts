@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'COVID___DATA_TEST_ALL_ENTID': idmap,
     'COVID___DATA_TEST_LIVE': 'FALSE',
     'COVID___DATA_TEST_EXPLAIN': 'FALSE',
-    'COVID___DATA_APIKEY': 'NONE',
   })
 
   idmap = env['COVID___DATA_TEST_ALL_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new Covid19DataSDK(merge([
       {
-        apikey: env.COVID___DATA_APIKEY,
       },
       extra
     ]))

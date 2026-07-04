@@ -42,8 +42,7 @@ class AllEntityTest < Minitest::Test
     # LOAD
     all_ref01_ent = client.All(nil)
     all_ref01_match_dt0 = {}
-    all_ref01_data_dt0_loaded, err = all_ref01_ent.load(all_ref01_match_dt0, nil)
-    assert_nil err
+    all_ref01_data_dt0_loaded = all_ref01_ent.load(all_ref01_match_dt0, nil)
     assert !all_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def all_basic_setup(extra)
     "COVID__DATA_TEST_ALL_ENTID" => idmap,
     "COVID__DATA_TEST_LIVE" => "FALSE",
     "COVID__DATA_TEST_EXPLAIN" => "FALSE",
-    "COVID__DATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def all_basic_setup(extra)
   if env["COVID__DATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COVID__DATA_APIKEY"],
       },
       extra || {},
     ])

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://disease.sh/v3/covid-19',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -170,7 +166,8 @@ class Config {
                     "name": "id",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

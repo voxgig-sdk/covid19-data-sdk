@@ -3,6 +3,8 @@
 import { AllEntity } from './entity/AllEntity'
 import { HistoricalEntity } from './entity/HistoricalEntity'
 
+export type * from './Covid19DataTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class Covid19DataSDK {
 
 
 
+  _all?: AllEntity
+
+  // Idiomatic facade: `client.all.list()` / `client.all.load({ id })`.
+  get all(): AllEntity {
+    return (this._all ??= new AllEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.all` instead. */
   All(data?: any) {
     const self = this
     return new AllEntity(self,data)
   }
 
 
+  _historical?: HistoricalEntity
+
+  // Idiomatic facade: `client.historical.list()` / `client.historical.load({ id })`.
+  get historical(): HistoricalEntity {
+    return (this._historical ??= new HistoricalEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.historical` instead. */
   Historical(data?: any) {
     const self = this
     return new HistoricalEntity(self,data)

@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:all():list() / client:all():load({ id = ... })
+function Covid19DataSDK:all(data)
+  local EntityMod = require("entity.all_entity")
+  if data == nil then
+    if self._all == nil then
+      self._all = EntityMod.new(self, nil)
+    end
+    return self._all
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:all() instead.
 function Covid19DataSDK:All(data)
   local EntityMod = require("entity.all_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:historical():list() / client:historical():load({ id = ... })
+function Covid19DataSDK:historical(data)
+  local EntityMod = require("entity.historical_entity")
+  if data == nil then
+    if self._historical == nil then
+      self._historical = EntityMod.new(self, nil)
+    end
+    return self._historical
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:historical() instead.
 function Covid19DataSDK:Historical(data)
   local EntityMod = require("entity.historical_entity")
   return EntityMod.new(self, data)

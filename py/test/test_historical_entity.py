@@ -49,8 +49,7 @@ class TestHistoricalEntity:
         # LOAD
         historical_ref01_ent = client.Historical(None)
         historical_ref01_match_dt0 = {}
-        historical_ref01_data_dt0_loaded, err = historical_ref01_ent.load(historical_ref01_match_dt0, None)
-        assert err is None
+        historical_ref01_data_dt0_loaded = historical_ref01_ent.load(historical_ref01_match_dt0, None)
         assert historical_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _historical_basic_setup(extra):
         "COVID__DATA_TEST_HISTORICAL_ENTID": idmap,
         "COVID__DATA_TEST_LIVE": "FALSE",
         "COVID__DATA_TEST_EXPLAIN": "FALSE",
-        "COVID__DATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _historical_basic_setup(extra):
     if env.get("COVID__DATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COVID__DATA_APIKEY"),
             },
             extra or {},
         ])

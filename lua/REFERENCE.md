@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## AllEntity
 
 ```lua
-local all = client:All(nil)
+local all = client:all(nil)
 ```
 
 ### Fields
@@ -106,7 +105,7 @@ local all = client:All(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:All():load({ id = "all_id" })
+local result, err = client:all():load({ id = "all_id" })
 ```
 
 ### Common Methods
@@ -142,7 +141,7 @@ Return the entity name.
 ## HistoricalEntity
 
 ```lua
-local historical = client:Historical(nil)
+local historical = client:historical(nil)
 ```
 
 ### Fields
@@ -160,7 +159,7 @@ local historical = client:Historical(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Historical():load({ id = "historical_id" })
+local result, err = client:historical():load({ id = "historical_id" })
 ```
 
 ### Common Methods

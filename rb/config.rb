@@ -15,9 +15,6 @@ module Covid19DataConfig
       },
       "options" => {
         "base" => "https://disease.sh/v3/covid-19",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -139,6 +136,7 @@ module Covid19DataConfig
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

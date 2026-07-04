@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `Covid19DataSDK.test()`.
 ## AllEntity
 
 ```ts
-const all = client.All()
+const all = client.all
 ```
 
 ### Fields
@@ -140,7 +139,7 @@ const all = client.All()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.All().load({ id: 'all_id' })
+const result = await client.all.load({ id: 'all_id' })
 ```
 
 ### Common Methods
@@ -174,7 +173,7 @@ Return a copy of the entity options.
 ## HistoricalEntity
 
 ```ts
-const historical = client.Historical()
+const historical = client.historical
 ```
 
 ### Fields
@@ -192,7 +191,7 @@ const historical = client.Historical()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Historical().load({ id: 'historical_id' })
+const result = await client.historical.load({ id: 'historical_id' })
 ```
 
 ### Common Methods

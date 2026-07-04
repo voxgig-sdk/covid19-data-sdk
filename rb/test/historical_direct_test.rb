@@ -23,7 +23,7 @@ class HistoricalDirectTest < Minitest::Test
       params["id"] = "direct01"
     end
 
-    result, err = client.direct({
+    result = client.direct({
       "path" => "historical/{id}",
       "method" => "GET",
       "params" => params,
@@ -33,8 +33,8 @@ class HistoricalDirectTest < Minitest::Test
       # Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
       # than fail when the load endpoint isn't reachable with the IDs
       # we can construct from setup.idmap.
-      if !err.nil?
-        skip("load call failed (likely synthetic IDs against live API): #{err}")
+      if !result["err"].nil?
+        skip("load call failed (likely synthetic IDs against live API): #{result["err"]}")
         return
       end
       unless result["ok"]
@@ -47,7 +47,7 @@ class HistoricalDirectTest < Minitest::Test
         return
       end
     else
-      assert_nil err
+      assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
       assert !result["data"].nil?
@@ -69,14 +69,12 @@ def historical_direct_setup(mockres)
   env = Runner.env_override({
     "COVID__DATA_TEST_HISTORICAL_ENTID" => {},
     "COVID__DATA_TEST_LIVE" => "FALSE",
-    "COVID__DATA_APIKEY" => "NONE",
   })
 
   live = env["COVID__DATA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["COVID__DATA_APIKEY"],
     }
     client = Covid19DataSDK.new(merged_opts)
     return {
