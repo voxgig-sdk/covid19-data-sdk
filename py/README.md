@@ -33,10 +33,12 @@ client = Covid19DataSDK()
 
 ### 3. Load an all
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.all.load({"id": "example_id"})
-    print(result)
+    all = client.All().load({"id": "example_id"})
+    print(all)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = Covid19DataSDK.test()
 
-result = client.all.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+all = client.All().load({"id": "test01"})
+# all contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `All` | `(data) -> AllEntity` | Create a All entity instance. |
+| `All` | `(data) -> AllEntity` | Create an All entity instance. |
 | `Historical` | `(data) -> HistoricalEntity` | Create a Historical entity instance. |
 
 ### Entity interface
@@ -233,7 +236,7 @@ API path: `/historical/{country}`
 
 ### All
 
-Create an instance: `const all = client.all`
+Create an instance: `all = client.All()`
 
 #### Operations
 
@@ -251,14 +254,14 @@ Create an instance: `const all = client.all`
 
 #### Example: Load
 
-```ts
-const all = await client.all.load({ id: 'all_id' })
+```python
+all = client.All().load({"id": "all_id"})
 ```
 
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `historical = client.Historical()`
 
 #### Operations
 
@@ -276,8 +279,8 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```python
+historical = client.Historical().load({"id": "historical_id"})
 ```
 
 
@@ -351,7 +354,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-all = client.all
+all = client.All()
 all.load({"id": "example_id"})
 
 # all.data_get() now returns the loaded all data

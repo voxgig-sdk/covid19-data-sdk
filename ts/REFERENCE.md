@@ -121,7 +121,7 @@ Alias for `Covid19DataSDK.test()`.
 ## AllEntity
 
 ```ts
-const all = client.all
+const all = client.All()
 ```
 
 ### Fields
@@ -139,7 +139,7 @@ const all = client.all
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.all.load({ id: 'all_id' })
+const result = await client.All().load({ id: 'all_id' })
 ```
 
 ### Common Methods
@@ -173,7 +173,7 @@ Return a copy of the entity options.
 ## HistoricalEntity
 
 ```ts
-const historical = client.historical
+const historical = client.Historical()
 ```
 
 ### Fields
@@ -191,7 +191,7 @@ const historical = client.historical
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.historical.load({ id: 'historical_id' })
+const result = await client.Historical().load({ id: 'historical_id' })
 ```
 
 ### Common Methods

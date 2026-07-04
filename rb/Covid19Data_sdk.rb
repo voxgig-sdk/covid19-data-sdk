@@ -208,26 +208,14 @@ class Covid19DataSDK
   end
 
 
-  # Idiomatic facade: client.all.list / client.all.load({ "id" => ... })
-  def all
-    require_relative 'entity/all_entity'
-    @all ||= AllEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.all instead.
+  # Canonical facade: client.All.list / client.All.load({ "id" => ... })
   def All(data = nil)
     require_relative 'entity/all_entity'
     AllEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.historical.list / client.historical.load({ "id" => ... })
-  def historical
-    require_relative 'entity/historical_entity'
-    @historical ||= HistoricalEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.historical instead.
+  # Canonical facade: client.Historical.list / client.Historical.load({ "id" => ... })
   def Historical(data = nil)
     require_relative 'entity/historical_entity'
     HistoricalEntity.new(self, data)

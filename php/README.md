@@ -33,9 +33,10 @@ $client = new Covid19DataSDK();
 
 ```php
 try {
-    $result = $client->all()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare All record (throws on error).
+    $all = $client->All()->load(["id" => "example_id"]);
+    print_r($all);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = Covid19DataSDK::test();
+$client = Covid19DataSDK::test([
+    "entity" => ["all" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->all()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$all = $client->All()->load(["id" => "test01"]);
+print_r($all);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `All` | `($data): AllEntity` | Create a All entity instance. |
+| `All` | `($data): AllEntity` | Create an All entity instance. |
 | `Historical` | `($data): HistoricalEntity` | Create a Historical entity instance. |
 
 ### Entity interface
@@ -238,7 +243,7 @@ API path: `/historical/{country}`
 
 ### All
 
-Create an instance: `const all = client.all`
+Create an instance: `$all = $client->All();`
 
 #### Operations
 
@@ -256,14 +261,15 @@ Create an instance: `const all = client.all`
 
 #### Example: Load
 
-```ts
-const all = await client.all.load({ id: 'all_id' })
+```php
+// load() returns the bare All record (throws on error).
+$all = $client->All()->load(["id" => "all_id"]);
 ```
 
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `$historical = $client->Historical();`
 
 #### Operations
 
@@ -281,8 +287,9 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```php
+// load() returns the bare Historical record (throws on error).
+$historical = $client->Historical()->load(["id" => "historical_id"]);
 ```
 
 
@@ -357,7 +364,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$all = $client->all();
+$all = $client->All();
 $all->load(["id" => "example_id"]);
 
 // $all->dataGet() now returns the loaded all data

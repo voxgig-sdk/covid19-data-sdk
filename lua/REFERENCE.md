@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## AllEntity
 
 ```lua
-local all = client:all(nil)
+local all = client:All(nil)
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ local all = client:all(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:all():load({ id = "all_id" })
+local result, err = client:All():load({ id = "all_id" })
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## HistoricalEntity
 
 ```lua
-local historical = client:historical(nil)
+local historical = client:Historical(nil)
 ```
 
 ### Fields
@@ -159,7 +159,7 @@ local historical = client:historical(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:historical():load({ id = "historical_id" })
+local result, err = client:Historical():load({ id = "historical_id" })
 ```
 
 ### Common Methods

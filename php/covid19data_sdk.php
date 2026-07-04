@@ -233,10 +233,10 @@ class Covid19DataSDK
 
     private $_all = null;
 
-    // Idiomatic facade: $client->all()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias All() (PHP method
-    // names are case-insensitive).
-    public function all($data = null)
+    // Canonical facade: $client->All()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->all()
+    // resolves here too.
+    public function All($data = null)
     {
         require_once __DIR__ . '/entity/all_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class Covid19DataSDK
 
     private $_historical = null;
 
-    // Idiomatic facade: $client->historical()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Historical() (PHP method
-    // names are case-insensitive).
-    public function historical($data = null)
+    // Canonical facade: $client->Historical()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->historical()
+    // resolves here too.
+    public function Historical($data = null)
     {
         require_once __DIR__ . '/entity/historical_entity.php';
         if ($data === null) {

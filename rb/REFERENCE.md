@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## AllEntity
 
 ```ruby
-all = client.all
+all = client.All
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ all = client.all
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.all.load({ "id" => "all_id" })
+result = client.All.load({ "id" => "all_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## HistoricalEntity
 
 ```ruby
-historical = client.historical
+historical = client.Historical
 ```
 
 ### Fields
@@ -162,7 +162,7 @@ historical = client.historical
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.historical.load({ "id" => "historical_id" })
+result = client.Historical.load({ "id" => "historical_id" })
 ```
 
 ### Common Methods

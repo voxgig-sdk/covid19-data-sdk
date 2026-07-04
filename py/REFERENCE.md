@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AllEntity
 
 ```python
-all = client.all
+all = client.All()
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ all = client.all
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.all.load({"id": "all_id"})
+result = client.All().load({"id": "all_id"})
 ```
 
 ### Common Methods
@@ -137,7 +137,7 @@ Return the entity name.
 ## HistoricalEntity
 
 ```python
-historical = client.historical
+historical = client.Historical()
 ```
 
 ### Fields
@@ -155,7 +155,7 @@ historical = client.historical
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.historical.load({"id": "historical_id"})
+result = client.Historical().load({"id": "historical_id"})
 ```
 
 ### Common Methods

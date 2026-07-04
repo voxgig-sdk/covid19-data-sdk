@@ -26,9 +26,9 @@ import { Covid19DataSDK } from '@voxgig-sdk/covid19-data'
 
 const client = new Covid19DataSDK()
 
-// Load all data
-const all = await client.all.load({})
-console.log(all.data)
+// Load all data (returns a All)
+const all = await client.All().load()
+console.log(all)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from covid19data_sdk import Covid19DataSDK
 client = Covid19DataSDK()
 
 
-# Load a specific all
-all = client.all.load({"id": "example_id"})
+# Load a specific all (returns the record, raises on error)
+all = client.All().load({"id": "example_id"})
 print(all)
 ```
 
@@ -99,8 +99,8 @@ require_once 'covid19data_sdk.php';
 $client = new Covid19DataSDK();
 
 
-// Load a specific all
-$all = $client->all()->load(["id" => "example_id"]);
+// Load a specific all (returns the bare record; throws on error)
+$all = $client->All()->load(["id" => "example_id"]);
 print_r($all);
 ```
 
@@ -124,8 +124,8 @@ require_relative "Covid19Data_sdk"
 client = Covid19DataSDK.new
 
 
-# Load a specific all
-all = client.all.load({ "id" => "example_id" })
+# Load a specific all (returns the bare record; raises on error)
+all = client.All.load({ "id" => "example_id" })
 puts all
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific all
-local all, err = client:all():load({ id = "example_id" })
+local all, err = client:All():load({ id = "example_id" })
 print(all)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = Covid19DataSDK.test()
-const result = await client.all.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const all = await client.All().load({ id: 'test01' })
+// all is a bare All populated with mock data
+console.log(all)
 ```
 
 ### Python
 
 ```python
 client = Covid19DataSDK.test()
-result = client.all.load({"id": "test01"})
+all = client.All().load({"id": "test01"})
+print(all)
 ```
 
 ### PHP
 
 ```php
-$client = Covid19DataSDK::test();
-$result = $client->all()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = Covid19DataSDK::test([
+    "entity" => ["all" => ["test01" => ["id" => "test01"]]],
+]);
+$all = $client->All()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.All(nil).Load(
 ### Ruby
 
 ```ruby
-client = Covid19DataSDK.test
-result = client.all.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = Covid19DataSDK.test({
+  "entity" => { "all" => { "test01" => { "id" => "test01" } } },
+})
+all = client.All.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:all():load({ id = "test01" })
+local result, err = client:All():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

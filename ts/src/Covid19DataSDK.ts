@@ -205,28 +205,14 @@ class Covid19DataSDK {
 
 
 
-  _all?: AllEntity
-
-  // Idiomatic facade: `client.all.list()` / `client.all.load({ id })`.
-  get all(): AllEntity {
-    return (this._all ??= new AllEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.all` instead. */
+  // Entity access: `client.All().list()` / `client.All().load({ id })`.
   All(data?: any) {
     const self = this
     return new AllEntity(self,data)
   }
 
 
-  _historical?: HistoricalEntity
-
-  // Idiomatic facade: `client.historical.list()` / `client.historical.load({ id })`.
-  get historical(): HistoricalEntity {
-    return (this._historical ??= new HistoricalEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.historical` instead. */
+  // Entity access: `client.Historical().list()` / `client.Historical().load({ id })`.
   Historical(data?: any) {
     const self = this
     return new HistoricalEntity(self,data)

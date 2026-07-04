@@ -32,8 +32,9 @@ client = Covid19DataSDK.new
 
 ```ruby
 begin
-  result = client.all.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare All record (raises on error).
+  all = client.All.load({ "id" => "example_id" })
+  puts all
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = Covid19DataSDK.test
+client = Covid19DataSDK.test({
+  "entity" => { "all" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.all.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+all = client.All.load({ "id" => "test01" })
+puts all
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `All` | `(data) -> AllEntity` | Create a All entity instance. |
+| `All` | `(data) -> AllEntity` | Create an All entity instance. |
 | `Historical` | `(data) -> HistoricalEntity` | Create a Historical entity instance. |
 
 ### Entity interface
@@ -233,7 +238,7 @@ API path: `/historical/{country}`
 
 ### All
 
-Create an instance: `const all = client.all`
+Create an instance: `all = client.All`
 
 #### Operations
 
@@ -251,14 +256,15 @@ Create an instance: `const all = client.all`
 
 #### Example: Load
 
-```ts
-const all = await client.all.load({ id: 'all_id' })
+```ruby
+# load returns the bare All record (raises on error).
+all = client.All.load({ "id" => "all_id" })
 ```
 
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `historical = client.Historical`
 
 #### Operations
 
@@ -276,8 +282,9 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```ruby
+# load returns the bare Historical record (raises on error).
+historical = client.Historical.load({ "id" => "historical_id" })
 ```
 
 
@@ -352,7 +359,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-all = client.all
+all = client.All
 all.load({ "id" => "example_id" })
 
 # all.data_get now returns the loaded all data

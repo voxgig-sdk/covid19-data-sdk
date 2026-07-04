@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AllEntity
 
 ```php
-$all = $client->all();
+$all = $client->All();
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ $all = $client->all();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->all()->load(["id" => "all_id"]);
+$result = $client->All()->load(["id" => "all_id"]);
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## HistoricalEntity
 
 ```php
-$historical = $client->historical();
+$historical = $client->Historical();
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ $historical = $client->historical();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->historical()->load(["id" => "historical_id"]);
+$result = $client->Historical()->load(["id" => "historical_id"]);
 ```
 
 ### Common Methods

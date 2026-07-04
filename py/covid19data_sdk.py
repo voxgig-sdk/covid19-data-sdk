@@ -220,41 +220,21 @@ class Covid19DataSDK:
         }
 
 
-    @property
-    def all(self):
-        """Idiomatic facade: client.all.list() / client.all.load({"id": ...})."""
-        from entity.all_entity import AllEntity
-        cached = getattr(self, "_all", None)
-        if cached is None:
-            cached = AllEntity(self, None)
-            self._all = cached
-        return cached
-
-    def All(self, data=None):
-        # Deprecated: use client.all instead.
+    def All(self, data=None) -> "AllEntity":
+        """Entity factory: client.All().list({}) / client.All().load({"id": ...})."""
         from entity.all_entity import AllEntity
         return AllEntity(self, data)
 
 
-    @property
-    def historical(self):
-        """Idiomatic facade: client.historical.list() / client.historical.load({"id": ...})."""
-        from entity.historical_entity import HistoricalEntity
-        cached = getattr(self, "_historical", None)
-        if cached is None:
-            cached = HistoricalEntity(self, None)
-            self._historical = cached
-        return cached
-
-    def Historical(self, data=None):
-        # Deprecated: use client.historical instead.
+    def Historical(self, data=None) -> "HistoricalEntity":
+        """Entity factory: client.Historical().list({}) / client.Historical().load({"id": ...})."""
         from entity.historical_entity import HistoricalEntity
         return HistoricalEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "Covid19DataSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class Covid19DataSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.all_entity import AllEntity
+    from entity.historical_entity import HistoricalEntity
