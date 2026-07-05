@@ -15,8 +15,7 @@ type All struct {
 	Recovered *map[string]any `json:"recovered,omitempty"`
 }
 
-// AllLoadMatch mirrors the all fields as an all-optional match
-// filter (Go analog of Partial<All>).
+// AllLoadMatch is the typed request payload for All.LoadTyped.
 type AllLoadMatch struct {
 	Case *map[string]any `json:"case,omitempty"`
 	Death *map[string]any `json:"death,omitempty"`

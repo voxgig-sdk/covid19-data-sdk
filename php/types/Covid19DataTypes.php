@@ -20,7 +20,7 @@ class All
     public ?array $recovered = null;
 }
 
-/** Match filter for All#load (any subset of All fields). */
+/** Request payload for All#load. */
 class AllLoadMatch
 {
     public ?array $case = null;

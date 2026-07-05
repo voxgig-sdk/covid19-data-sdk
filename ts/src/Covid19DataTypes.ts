@@ -11,7 +11,11 @@ export interface All {
   recovered?: Record<string, any>
 }
 
-export type AllLoadMatch = Partial<All>
+export interface AllLoadMatch {
+  case?: Record<string, any>
+  death?: Record<string, any>
+  recovered?: Record<string, any>
+}
 
 export interface Historical {
   country?: string

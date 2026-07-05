@@ -94,9 +94,9 @@ local all = client:All(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `table` | No |  |
+| `death` | `table` | No |  |
+| `recovered` | `table` | No |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ local all = client:All(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:All():load({ id = "all_id" })
+local result, err = client:All():load()
 ```
 
 ### Common Methods
@@ -148,9 +148,9 @@ local historical = client:Historical(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `string` | No |  |
+| `province` | `table` | No |  |
+| `timeline` | `table` | No |  |
 
 ### Operations
 

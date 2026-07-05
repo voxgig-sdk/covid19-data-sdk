@@ -25,7 +25,7 @@ All = Struct.new(
   keyword_init: true
 )
 
-# Match filter for All#load (any subset of All fields).
+# Request payload for All#load.
 #
 # @!attribute [rw] case
 #   @return [Hash, nil]

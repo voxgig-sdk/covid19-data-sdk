@@ -12,6 +12,9 @@
 ---@field recovered? table
 
 ---@class AllLoadMatch
+---@field case? table
+---@field death? table
+---@field recovered? table
 
 ---@class Historical
 ---@field country? string

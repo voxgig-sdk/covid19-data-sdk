@@ -8,7 +8,7 @@ Complete API reference for the Covid19Data Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'covid19-data_sdk'
+require_relative 'Covid19Data_sdk'
 
 client = Covid19DataSDK.new(options)
 ```
@@ -97,9 +97,9 @@ all = client.All
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `Hash` | No |  |
+| `death` | `Hash` | No |  |
+| `recovered` | `Hash` | No |  |
 
 ### Operations
 
@@ -108,7 +108,7 @@ all = client.All
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.All.load({ "id" => "all_id" })
+result = client.All.load()
 ```
 
 ### Common Methods
@@ -151,9 +151,9 @@ historical = client.Historical
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `String` | No |  |
+| `province` | `Array` | No |  |
+| `timeline` | `Hash` | No |  |
 
 ### Operations
 

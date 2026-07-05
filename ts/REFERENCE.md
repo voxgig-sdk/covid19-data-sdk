@@ -128,9 +128,9 @@ const all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `Record<string, any>` | No |  |
+| `death` | `Record<string, any>` | No |  |
+| `recovered` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -139,7 +139,7 @@ const all = client.All()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.All().load({ id: 'all_id' })
+const result = await client.All().load()
 ```
 
 ### Common Methods
@@ -180,9 +180,9 @@ const historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `string` | No |  |
+| `province` | `any[]` | No |  |
+| `timeline` | `Record<string, any>` | No |  |
 
 ### Operations
 

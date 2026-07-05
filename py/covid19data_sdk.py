@@ -221,13 +221,13 @@ class Covid19DataSDK:
 
 
     def All(self, data=None) -> "AllEntity":
-        """Entity factory: client.All().list({}) / client.All().load({"id": ...})."""
+        """Entity factory: client.All().list() / client.All().load({"id": ...})."""
         from entity.all_entity import AllEntity
         return AllEntity(self, data)
 
 
     def Historical(self, data=None) -> "HistoricalEntity":
-        """Entity factory: client.Historical().list({}) / client.Historical().load({"id": ...})."""
+        """Entity factory: client.Historical().list() / client.Historical().load({"id": ...})."""
         from entity.historical_entity import HistoricalEntity
         return HistoricalEntity(self, data)
 

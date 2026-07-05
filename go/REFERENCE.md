@@ -101,9 +101,9 @@ all := client.All(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `map[string]any` | No |  |
+| `death` | `map[string]any` | No |  |
+| `recovered` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -112,7 +112,7 @@ all := client.All(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.All(nil).Load(map[string]any{"id": "all_id"}, nil)
+result, err := client.All(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -149,9 +149,9 @@ historical := client.Historical(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `string` | No |  |
+| `province` | `[]any` | No |  |
+| `timeline` | `map[string]any` | No |  |
 
 ### Operations
 

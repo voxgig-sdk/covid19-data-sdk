@@ -8,7 +8,7 @@ Complete API reference for the Covid19Data Python SDK.
 ### Constructor
 
 ```python
-from covid19-data_sdk import Covid19DataSDK
+from covid19data_sdk import Covid19DataSDK
 
 client = Covid19DataSDK(options)
 ```
@@ -91,9 +91,9 @@ all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `dict` | No |  |
+| `death` | `dict` | No |  |
+| `recovered` | `dict` | No |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ all = client.All()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.All().load({"id": "all_id"})
+result = client.All().load()
 ```
 
 ### Common Methods
@@ -144,9 +144,9 @@ historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `str` | No |  |
+| `province` | `list` | No |  |
+| `timeline` | `dict` | No |  |
 
 ### Operations
 

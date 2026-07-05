@@ -8,7 +8,7 @@ Complete API reference for the Covid19Data PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/covid19-data_sdk.php';
+require_once __DIR__ . '/covid19data_sdk.php';
 
 $client = new Covid19DataSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `AllEntity` instance. Pass `null` for no initial data.
 
 Create a new `HistoricalEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): Covid19DataUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,9 +96,9 @@ $all = $client->All();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | ``$OBJECT`` | No |  |
-| `death` | ``$OBJECT`` | No |  |
-| `recovered` | ``$OBJECT`` | No |  |
+| `case` | `array` | No |  |
+| `death` | `array` | No |  |
+| `recovered` | `array` | No |  |
 
 ### Operations
 
@@ -107,24 +107,24 @@ $all = $client->All();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->All()->load(["id" => "all_id"]);
+$result = $client->All()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -133,7 +133,7 @@ Set the entity match criteria.
 Create a new `AllEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -150,9 +150,9 @@ $historical = $client->Historical();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | No |  |
-| `province` | ``$ARRAY`` | No |  |
-| `timeline` | ``$OBJECT`` | No |  |
+| `country` | `string` | No |  |
+| `province` | `array` | No |  |
+| `timeline` | `array` | No |  |
 
 ### Operations
 
@@ -166,19 +166,19 @@ $result = $client->Historical()->load(["id" => "historical_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -187,7 +187,7 @@ Set the entity match criteria.
 Create a new `HistoricalEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
