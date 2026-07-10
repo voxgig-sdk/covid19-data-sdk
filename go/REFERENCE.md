@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 all := client.All(nil)
+fmt.Println(all.GetName()) // "all"
 ```
 
 ### Fields
@@ -113,6 +114,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.All(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -143,6 +148,7 @@ Return the entity name.
 
 ```go
 historical := client.Historical(nil)
+fmt.Println(historical.GetName()) // "historical"
 ```
 
 ### Fields
@@ -161,6 +167,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Historical(nil).Load(map[string]any{"id": "historical_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

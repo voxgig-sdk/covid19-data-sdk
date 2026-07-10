@@ -15,9 +15,9 @@ main: {
           url: "https://disease.sh/v3/covid-19"
         }
       ]
+      summary: "This API provides comprehensive data on COVID-19 cases, deaths, and recoveries across various dates, offering users access to historical trends and real-time statistics."
       title: "COVID-19 Data API"
       version: "3.0.0"
+      website: "https://disease.sh"
     }
   }
-}
-
