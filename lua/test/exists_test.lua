@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Covid19Data SDK exists test
 
 local sdk = require("covid19-data_sdk")
 

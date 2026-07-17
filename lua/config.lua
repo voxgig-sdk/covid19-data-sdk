@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- Covid19Data SDK configuration
 
 local function make_config()
   return {
