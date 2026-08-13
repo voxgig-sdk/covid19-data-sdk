@@ -7,13 +7,13 @@
 -- edit by hand.
 
 ---@class All
----@field case? table
----@field death? table
+---@field cases? table
+---@field deaths? table
 ---@field recovered? table
 
 ---@class AllLoadMatch
----@field case? table
----@field death? table
+---@field cases? table
+---@field deaths? table
 ---@field recovered? table
 
 ---@class Historical

@@ -6,12 +6,12 @@ main: kit: entity: all: {
 
   fields: [
     {
-      name: "case"
+      name: "cases"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "death"
+      name: "deaths"
       req: false
       type: "`$OBJECT`"
     }

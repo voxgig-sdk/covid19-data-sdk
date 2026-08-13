@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = Covid19DataSDK.test()
 
 const all = await client.All().load()
-// all is a bare entity populated with mock response data
+// all is the entity, populated with mock response data
+// — call all.data() for the record itself
 console.log(all)
 ```
 
@@ -285,8 +286,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `case` |  |
-| `death` |  |
+| `cases` |  |
+| `deaths` |  |
 | `recovered` |  |
 
 Operations: load.
@@ -324,8 +325,8 @@ Create an instance: `const all = client.All()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case` | `Record<string, any>` |  |
-| `death` | `Record<string, any>` |  |
+| `cases` | `Record<string, any>` |  |
+| `deaths` | `Record<string, any>` |  |
 | `recovered` | `Record<string, any>` |  |
 
 #### Example: Load

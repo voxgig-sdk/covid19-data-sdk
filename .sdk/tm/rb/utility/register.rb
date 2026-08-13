@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ Covid19DataUtility.registrar = ->(u) {
   u.prepare_params = Covid19DataUtilities::PrepareParams
   u.prepare_path = Covid19DataUtilities::PreparePath
   u.prepare_query = Covid19DataUtilities::PrepareQuery
+  u.graphql_body = Covid19DataUtilities::GraphqlBody
+  u.graphql_errors = Covid19DataUtilities::GraphqlErrors
   u.result_basic = Covid19DataUtilities::ResultBasic
   u.result_body = Covid19DataUtilities::ResultBody
   u.result_headers = Covid19DataUtilities::ResultHeaders

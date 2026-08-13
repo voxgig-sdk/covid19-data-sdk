@@ -6,14 +6,14 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface All {
-  case?: Record<string, any>
-  death?: Record<string, any>
+  cases?: Record<string, any>
+  deaths?: Record<string, any>
   recovered?: Record<string, any>
 }
 
 export interface AllLoadMatch {
-  case?: Record<string, any>
-  death?: Record<string, any>
+  cases?: Record<string, any>
+  deaths?: Record<string, any>
   recovered?: Record<string, any>
 }
 

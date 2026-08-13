@@ -59,11 +59,11 @@ def all_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "COVID__DATA_TEST_ALL_ENTID" => {},
-    "COVID__DATA_TEST_LIVE" => "FALSE",
+    "COVID19_DATA_TEST_ALL_ENTID" => {},
+    "COVID19_DATA_TEST_LIVE" => "FALSE",
   })
 
-  live = env["COVID__DATA_TEST_LIVE"] == "TRUE"
+  live = env["COVID19_DATA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

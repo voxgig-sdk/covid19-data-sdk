@@ -19,11 +19,15 @@ import {
 describe('HistoricalDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COVID19DATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COVID19DATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COVID19_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COVID19_DATA_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new Covid19DataSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,17 +81,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'COVID__DATA_TEST_HISTORICAL_ENTID': {},
-    'COVID__DATA_TEST_LIVE': 'FALSE',
+    'COVID19_DATA_TEST_HISTORICAL_ENTID': {},
+    'COVID19_DATA_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.COVID__DATA_TEST_LIVE
+  const live = 'TRUE' === env.COVID19_DATA_TEST_LIVE
 
   if (live) {
     const client = new Covid19DataSDK({
     })
 
-    let idmap: any = env['COVID__DATA_TEST_HISTORICAL_ENTID']
+    let idmap: any = env['COVID19_DATA_TEST_HISTORICAL_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

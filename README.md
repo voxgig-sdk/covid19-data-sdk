@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = Covid19DataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = Covid19DataSDK.test({
+  entity: {
+    all: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const all = await client.All().load()
-// all is a bare All populated with mock data
+// all is the All entity, populated with mock data
+// — call all.data() for the record itself
 console.log(all)
 ```
 
@@ -183,7 +192,7 @@ require_once 'covid19data_sdk.php';
 $client = new Covid19DataSDK();
 
 
-// Load a specific all (returns the bare record; throws on error)
+// Load a specific all (returns the ENTITY; call data_get() for the record; throws on error)
 $all = $client->All()->load();
 print_r($all);
 ```
@@ -211,7 +220,7 @@ require_relative "Covid19Data_sdk"
 client = Covid19DataSDK.new
 
 
-# Load a specific all (returns the bare record; raises on error)
+# Load a specific all (returns the ENTITY; call data_get for the record)
 all = client.All.load()
 puts all
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://disease.sh](https://disease.sh)
 

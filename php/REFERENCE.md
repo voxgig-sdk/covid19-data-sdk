@@ -96,8 +96,8 @@ $all = $client->All();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `array` | No |  |
-| `death` | `array` | No |  |
+| `cases` | `array` | No |  |
+| `deaths` | `array` | No |  |
 | `recovered` | `array` | No |  |
 
 ### Operations

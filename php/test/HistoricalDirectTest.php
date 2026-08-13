@@ -73,11 +73,11 @@ function historical_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "COVID__DATA_TEST_HISTORICAL_ENTID" => [],
-        "COVID__DATA_TEST_LIVE" => "FALSE",
+        "COVID19_DATA_TEST_HISTORICAL_ENTID" => [],
+        "COVID19_DATA_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["COVID__DATA_TEST_LIVE"] === "TRUE";
+    $live = $env["COVID19_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

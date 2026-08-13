@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import Covid19DataControl
-from core.error import Covid19DataError
-from core.result import Covid19DataResult
-from core.spec import Covid19DataSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import Covid19DataControl
+from projectname_sdk.core.error import Covid19DataError
+from projectname_sdk.core.result import Covid19DataResult
+from projectname_sdk.core.spec import Covid19DataSpec
 
 
 # True when this SDK was generated with the named feature.

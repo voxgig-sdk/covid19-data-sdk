@@ -226,8 +226,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `case` |  |
-| `death` |  |
+| `cases` |  |
+| `deaths` |  |
 | `recovered` |  |
 
 Operations: Load.
@@ -265,8 +265,8 @@ Create an instance: `local all = client:All(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case` | `table` |  |
-| `death` | `table` |  |
+| `cases` | `table` |  |
+| `deaths` | `table` |  |
 | `recovered` | `table` |  |
 
 #### Example: Load

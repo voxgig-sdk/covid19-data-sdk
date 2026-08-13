@@ -16,11 +16,11 @@
 import pytest
 
 from covid19data_sdk import Covid19DataSDK
-from core.error import Covid19DataError
-from core.result import Covid19DataResult
-from core.response import Covid19DataResponse
-from core.spec import Covid19DataSpec
-from feature.base_feature import Covid19DataBaseFeature
+from covid19data_sdk.core.error import Covid19DataError
+from covid19data_sdk.core.result import Covid19DataResult
+from covid19data_sdk.core.response import Covid19DataResponse
+from covid19data_sdk.core.spec import Covid19DataSpec
+from covid19data_sdk.feature.base_feature import Covid19DataBaseFeature
 
 
 def _client():

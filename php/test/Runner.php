@@ -43,8 +43,8 @@ class Covid19DataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('COVID19DATA_TEST_LIVE');
-        $override = self::getenv('COVID19DATA_TEST_OVERRIDE');
+        $live = self::getenv('COVID19_DATA_TEST_LIVE');
+        $override = self::getenv('COVID19_DATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class Covid19DataTestRunner
             }
         }
 
-        $explain = self::getenv('COVID19DATA_TEST_EXPLAIN');
+        $explain = self::getenv('COVID19_DATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['COVID19DATA_TEST_EXPLAIN'] = $explain;
+            $m['COVID19_DATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

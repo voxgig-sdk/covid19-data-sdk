@@ -2,20 +2,20 @@
   "existing": {
     "all": {
       "ALL00": {
-        "case": {},
-        "death": {},
+        "cases": {},
+        "deaths": {},
         "recovered": {},
         "id": "ALL00"
       },
       "ALL01": {
-        "case": {},
-        "death": {},
+        "cases": {},
+        "deaths": {},
         "recovered": {},
         "id": "ALL01"
       },
       "ALL02": {
-        "case": {},
-        "death": {},
+        "cases": {},
+        "deaths": {},
         "recovered": {},
         "id": "ALL02"
       }
@@ -24,8 +24,8 @@
   "new": {
     "all": {
       "all_ref01": {
-        "case": {},
-        "death": {},
+        "cases": {},
+        "deaths": {},
         "recovered": {}
       }
     }

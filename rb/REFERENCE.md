@@ -97,8 +97,8 @@ all = client.All
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `Hash` | No |  |
-| `death` | `Hash` | No |  |
+| `cases` | `Hash` | No |  |
+| `deaths` | `Hash` | No |  |
 | `recovered` | `Hash` | No |  |
 
 ### Operations

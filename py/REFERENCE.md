@@ -91,8 +91,8 @@ all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `dict` | No |  |
-| `death` | `dict` | No |  |
+| `cases` | `dict` | No |  |
+| `deaths` | `dict` | No |  |
 | `recovered` | `dict` | No |  |
 
 ### Operations

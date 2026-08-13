@@ -10,34 +10,34 @@
 
 # All entity data model.
 #
-# @!attribute [rw] case
+# @!attribute [rw] cases
 #   @return [Hash, nil]
 #
-# @!attribute [rw] death
+# @!attribute [rw] deaths
 #   @return [Hash, nil]
 #
 # @!attribute [rw] recovered
 #   @return [Hash, nil]
 All = Struct.new(
-  :case,
-  :death,
+  :cases,
+  :deaths,
   :recovered,
   keyword_init: true
 )
 
 # Request payload for All#load.
 #
-# @!attribute [rw] case
+# @!attribute [rw] cases
 #   @return [Hash, nil]
 #
-# @!attribute [rw] death
+# @!attribute [rw] deaths
 #   @return [Hash, nil]
 #
 # @!attribute [rw] recovered
 #   @return [Hash, nil]
 AllLoadMatch = Struct.new(
-  :case,
-  :death,
+  :cases,
+  :deaths,
   :recovered,
   keyword_init: true
 )

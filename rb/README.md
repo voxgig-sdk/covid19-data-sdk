@@ -34,7 +34,7 @@ client = Covid19DataSDK.new
 
 ```ruby
 begin
-  # load returns the bare All record (raises on error).
+  # load returns the ENTITY — call data_get for the All record (raises on error).
   all = client.All.load()
   puts all
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = Covid19DataSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 all = client.All.load()
 puts all
 ```
@@ -235,8 +236,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `case` |  |
-| `death` |  |
+| `cases` |  |
+| `deaths` |  |
 | `recovered` |  |
 
 Operations: Load.
@@ -274,14 +275,14 @@ Create an instance: `all = client.All`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case` | `Hash` |  |
-| `death` | `Hash` |  |
+| `cases` | `Hash` |  |
+| `deaths` | `Hash` |  |
 | `recovered` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare All record (raises on error).
+# load returns the ENTITY — call data_get for the All record (raises on error).
 all = client.All.load()
 ```
 
@@ -307,7 +308,7 @@ Create an instance: `historical = client.Historical`
 #### Example: Load
 
 ```ruby
-# load returns the bare Historical record (raises on error).
+# load returns the ENTITY — call data_get for the Historical record (raises on error).
 historical = client.Historical.load({ "id" => "historical_id" })
 ```
 

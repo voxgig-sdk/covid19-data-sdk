@@ -26,8 +26,8 @@ import {
 describe('AllEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COVID19DATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COVID19DATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COVID19_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COVID19_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = Covid19DataSDK.test()
@@ -38,7 +38,7 @@ describe('AllEntity', async () => {
 
   test('basic', async (t) => {
 
-    const live = 'TRUE' === process.env.COVID___DATA_TEST_LIVE
+    const live = 'TRUE' === process.env.COVID19_DATA_TEST_LIVE
     for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'all.' + op, live)) return
     }
@@ -48,7 +48,7 @@ describe('AllEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COVID___DATA_TEST_ALL_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set COVID19_DATA_TEST_ALL_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -62,7 +62,7 @@ describe('AllEntity', async () => {
     // LOAD
     const all_ref01_ent = client.All()
     const all_ref01_match_dt0: any = {}
-    const all_ref01_data_dt0 = await all_ref01_ent.load(all_ref01_match_dt0)
+    const all_ref01_data_dt0 = (await all_ref01_ent.load(all_ref01_match_dt0)).data()
     assert(null != all_ref01_data_dt0)
 
 
@@ -106,18 +106,18 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COVID___DATA_TEST_ALL_ENTID']
+  const idmapEnvVal = process.env['COVID19_DATA_TEST_ALL_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'COVID___DATA_TEST_ALL_ENTID': idmap,
-    'COVID___DATA_TEST_LIVE': 'FALSE',
-    'COVID___DATA_TEST_EXPLAIN': 'FALSE',
+    'COVID19_DATA_TEST_ALL_ENTID': idmap,
+    'COVID19_DATA_TEST_LIVE': 'FALSE',
+    'COVID19_DATA_TEST_EXPLAIN': 'FALSE',
   })
 
-  idmap = env['COVID___DATA_TEST_ALL_ENTID']
+  idmap = env['COVID19_DATA_TEST_ALL_ENTID']
 
-  const live = 'TRUE' === env.COVID___DATA_TEST_LIVE
+  const live = 'TRUE' === env.COVID19_DATA_TEST_LIVE
 
   if (live) {
     client = new Covid19DataSDK(merge([
@@ -134,7 +134,7 @@ function basicSetup(extra?: any) {
     client,
     struct,
     data: entityData,
-    explain: 'TRUE' === env.COVID___DATA_TEST_EXPLAIN,
+    explain: 'TRUE' === env.COVID19_DATA_TEST_EXPLAIN,
     live,
     syntheticOnly: live && !idmapOverridden,
     now: Date.now(),

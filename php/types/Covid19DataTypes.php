@@ -15,16 +15,16 @@ declare(strict_types=1);
 /** All entity data model. */
 class All
 {
-    public ?array $case = null;
-    public ?array $death = null;
+    public ?array $cases = null;
+    public ?array $deaths = null;
     public ?array $recovered = null;
 }
 
 /** Request payload for All#load. */
 class AllLoadMatch
 {
-    public ?array $case = null;
-    public ?array $death = null;
+    public ?array $cases = null;
+    public ?array $deaths = null;
     public ?array $recovered = null;
 }
 

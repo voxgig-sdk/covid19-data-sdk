@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ Covid19DataUtility::setRegistrar(function (Covid19DataUtility $u): void {
     $u->prepare_params = [Covid19DataPrepareParams::class, 'call'];
     $u->prepare_path = [Covid19DataPreparePath::class, 'call'];
     $u->prepare_query = [Covid19DataPrepareQuery::class, 'call'];
+    $u->graphql_body = [Covid19DataGraphql::class, 'body'];
+    $u->graphql_errors = [Covid19DataGraphql::class, 'errors'];
     $u->result_basic = [Covid19DataResultBasic::class, 'call'];
     $u->result_body = [Covid19DataResultBody::class, 'call'];
     $u->result_headers = [Covid19DataResultHeaders::class, 'call'];

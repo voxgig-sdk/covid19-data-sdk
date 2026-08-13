@@ -128,8 +128,8 @@ const all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `Record<string, any>` | No |  |
-| `death` | `Record<string, any>` | No |  |
+| `cases` | `Record<string, any>` | No |  |
+| `deaths` | `Record<string, any>` | No |  |
 | `recovered` | `Record<string, any>` | No |  |
 
 ### Operations

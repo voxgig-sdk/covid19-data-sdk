@@ -94,8 +94,8 @@ local all = client:All(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `table` | No |  |
-| `death` | `table` | No |  |
+| `cases` | `table` | No |  |
+| `deaths` | `table` | No |  |
 | `recovered` | `table` | No |  |
 
 ### Operations

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Covid19Data SDK exists test
 
 import pytest
 from covid19data_sdk import Covid19DataSDK

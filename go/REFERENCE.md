@@ -102,8 +102,8 @@ fmt.Println(all.GetName()) // "all"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case` | `map[string]any` | No |  |
-| `death` | `map[string]any` | No |  |
+| `cases` | `map[string]any` | No |  |
+| `deaths` | `map[string]any` | No |  |
 | `recovered` | `map[string]any` | No |  |
 
 ### Operations

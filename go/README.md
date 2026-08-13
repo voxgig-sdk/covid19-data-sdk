@@ -259,8 +259,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"case"` |  |
-| `"death"` |  |
+| `"cases"` |  |
+| `"deaths"` |  |
 | `"recovered"` |  |
 
 Operations: Load.
@@ -298,8 +298,8 @@ Create an instance: `all := client.All(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case` | `map[string]any` |  |
-| `death` | `map[string]any` |  |
+| `cases` | `map[string]any` |  |
+| `deaths` | `map[string]any` |  |
 | `recovered` | `map[string]any` |  |
 
 #### Example: Load
