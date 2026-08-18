@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class Covid19DataConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -32,25 +55,16 @@ class Covid19DataConfig
         'all' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'cases',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'deaths',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'recovered',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 2,
             ],
           ],
           'name' => 'all',
@@ -60,16 +74,13 @@ class Covid19DataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'all',
                         'kind' => 'query',
                         'name' => 'lastday',
                         'orig' => 'lastday',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -90,10 +101,8 @@ class Covid19DataConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -103,25 +112,16 @@ class Covid19DataConfig
         'historical' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'country',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'province',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'timeline',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 2,
             ],
           ],
           'name' => 'historical',
@@ -131,28 +131,23 @@ class Covid19DataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'USA',
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'country',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'all',
                         'kind' => 'query',
                         'name' => 'lastday',
                         'orig' => 'lastday',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -179,10 +174,8 @@ class Covid19DataConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

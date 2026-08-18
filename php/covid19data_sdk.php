@@ -40,7 +40,7 @@ class Covid19DataSDK
         $utility = new Covid19DataUtility();
         $this->_utility = $utility;
 
-        $config = Covid19DataConfig::make_config();
+        $config = Covid19DataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

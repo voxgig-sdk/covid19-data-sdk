@@ -1,6 +1,20 @@
 # Covid19Data SDK configuration
 
 module Covid19DataConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -27,25 +41,16 @@ module Covid19DataConfig
         "all" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "cases",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "deaths",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "recovered",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 2,
             },
           ],
           "name" => "all",
@@ -55,16 +60,13 @@ module Covid19DataConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "all",
                         "kind" => "query",
                         "name" => "lastday",
                         "orig" => "lastday",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -85,10 +87,8 @@ module Covid19DataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -98,25 +98,16 @@ module Covid19DataConfig
         "historical" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "country",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "province",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "timeline",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 2,
             },
           ],
           "name" => "historical",
@@ -126,28 +117,23 @@ module Covid19DataConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "USA",
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "all",
                         "kind" => "query",
                         "name" => "lastday",
                         "orig" => "lastday",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -174,10 +160,8 @@ module Covid19DataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

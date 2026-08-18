@@ -28,7 +28,7 @@ class Covid19DataSDK
     utility = Covid19DataUtility.new
     @_utility = utility
 
-    config = Covid19DataConfig.make_config
+    config = Covid19DataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

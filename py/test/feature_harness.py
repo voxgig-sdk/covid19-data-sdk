@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from covid19data_sdk.config import make_config
+from covid19data_sdk.config import shared_config
 from covid19data_sdk.features import _make_feature
 from covid19data_sdk.core.control import Covid19DataControl
 from covid19data_sdk.core.error import Covid19DataError
@@ -24,7 +24,7 @@ from covid19data_sdk.core.spec import Covid19DataSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

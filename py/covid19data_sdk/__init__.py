@@ -23,8 +23,8 @@ class Covid19DataSDK:
         utility = Covid19DataUtility()
         self._utility = utility
 
-        from covid19data_sdk.config import make_config
-        config = make_config()
+        from covid19data_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
