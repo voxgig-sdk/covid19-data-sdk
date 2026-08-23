@@ -226,9 +226,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `cases` |  |
-| `deaths` |  |
-| `recovered` |  |
+| `cases` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | Historical recovered data with dates as keys and recovery counts as values |
 
 Operations: Load.
 
@@ -238,8 +238,8 @@ API path: `/historical/all`
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `province` |  |
+| `country` | Country name |
+| `province` | List of provinces/states if applicable |
 | `timeline` |  |
 
 Operations: Load.
@@ -265,9 +265,9 @@ Create an instance: `local all = client:All(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cases` | `table` |  |
-| `deaths` | `table` |  |
-| `recovered` | `table` |  |
+| `cases` | `table` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `table` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `table` | Historical recovered data with dates as keys and recovery counts as values |
 
 #### Example: Load
 
@@ -290,8 +290,8 @@ Create an instance: `local historical = client:Historical(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `province` | `table` |  |
+| `country` | `string` | Country name |
+| `province` | `table` | List of provinces/states if applicable |
 | `timeline` | `table` |  |
 
 #### Example: Load

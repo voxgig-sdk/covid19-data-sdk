@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Covid19Data",
+			"slug": "covid19-data",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,14 +37,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cases",
+						"short": "Historical cases data with dates as keys and case counts as values",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "deaths",
+						"short": "Historical deaths data with dates as keys and death counts as values",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "recovered",
+						"short": "Historical recovered data with dates as keys and recovery counts as values",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -91,10 +97,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "country",
+						"short": "Country name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "province",
+						"short": "List of provinces/states if applicable",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{

@@ -96,9 +96,9 @@ $all = $client->All();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `array` | No |  |
-| `deaths` | `array` | No |  |
-| `recovered` | `array` | No |  |
+| `cases` | `array` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `array` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `array` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -150,8 +150,8 @@ $historical = $client->Historical();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | No |  |
-| `province` | `array` | No |  |
+| `country` | `string` | No | Country name |
+| `province` | `array` | No | List of provinces/states if applicable |
 | `timeline` | `array` | No |  |
 
 ### Operations

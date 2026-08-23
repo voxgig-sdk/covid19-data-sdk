@@ -33,6 +33,9 @@ class Covid19DataConfig
         return [
             "main" => [
                 "name" => "Covid19Data",
+                "slug" => "covid19-data",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -56,14 +59,17 @@ class Covid19DataConfig
           'fields' => [
             [
               'name' => 'cases',
+              'short' => 'Historical cases data with dates as keys and case counts as values',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'deaths',
+              'short' => 'Historical deaths data with dates as keys and death counts as values',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'recovered',
+              'short' => 'Historical recovered data with dates as keys and recovery counts as values',
               'type' => '`$OBJECT`',
             ],
           ],
@@ -113,10 +119,12 @@ class Covid19DataConfig
           'fields' => [
             [
               'name' => 'country',
+              'short' => 'Country name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'province',
+              'short' => 'List of provinces/states if applicable',
               'type' => '`$ARRAY`',
             ],
             [

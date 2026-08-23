@@ -8,16 +8,19 @@ main: kit: entity: all: {
     {
       name: "cases"
       req: false
+      short: "Historical cases data with dates as keys and case counts as values"
       type: "`$OBJECT`"
     }
     {
       name: "deaths"
       req: false
+      short: "Historical deaths data with dates as keys and death counts as values"
       type: "`$OBJECT`"
     }
     {
       name: "recovered"
       req: false
+      short: "Historical recovered data with dates as keys and recovery counts as values"
       type: "`$OBJECT`"
     }
   ]

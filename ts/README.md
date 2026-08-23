@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -286,9 +286,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `cases` |  |
-| `deaths` |  |
-| `recovered` |  |
+| `cases` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | Historical recovered data with dates as keys and recovery counts as values |
 
 Operations: load.
 
@@ -298,8 +298,8 @@ API path: `/historical/all`
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `province` |  |
+| `country` | Country name |
+| `province` | List of provinces/states if applicable |
 | `timeline` |  |
 
 Operations: load.
@@ -325,9 +325,9 @@ Create an instance: `const all = client.All()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cases` | `Record<string, any>` |  |
-| `deaths` | `Record<string, any>` |  |
-| `recovered` | `Record<string, any>` |  |
+| `cases` | `Record<string, any>` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `Record<string, any>` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `Record<string, any>` | Historical recovered data with dates as keys and recovery counts as values |
 
 #### Example: Load
 
@@ -350,8 +350,8 @@ Create an instance: `const historical = client.Historical()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `province` | `any[]` |  |
+| `country` | `string` | Country name |
+| `province` | `any[]` | List of provinces/states if applicable |
 | `timeline` | `Record<string, any>` |  |
 
 #### Example: Load

@@ -102,9 +102,9 @@ fmt.Println(all.GetName()) // "all"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `map[string]any` | No |  |
-| `deaths` | `map[string]any` | No |  |
-| `recovered` | `map[string]any` | No |  |
+| `cases` | `map[string]any` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `map[string]any` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `map[string]any` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -155,8 +155,8 @@ fmt.Println(historical.GetName()) // "historical"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | No |  |
-| `province` | `[]any` | No |  |
+| `country` | `string` | No | Country name |
+| `province` | `[]any` | No | List of provinces/states if applicable |
 | `timeline` | `map[string]any` | No |  |
 
 ### Operations

@@ -94,9 +94,9 @@ local all = client:All(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `table` | No |  |
-| `deaths` | `table` | No |  |
-| `recovered` | `table` | No |  |
+| `cases` | `table` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `table` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `table` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -148,8 +148,8 @@ local historical = client:Historical(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | No |  |
-| `province` | `table` | No |  |
+| `country` | `string` | No | Country name |
+| `province` | `table` | No | List of provinces/states if applicable |
 | `timeline` | `table` | No |  |
 
 ### Operations

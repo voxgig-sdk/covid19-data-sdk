@@ -236,9 +236,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `cases` |  |
-| `deaths` |  |
-| `recovered` |  |
+| `cases` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | Historical recovered data with dates as keys and recovery counts as values |
 
 Operations: Load.
 
@@ -248,8 +248,8 @@ API path: `/historical/all`
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `province` |  |
+| `country` | Country name |
+| `province` | List of provinces/states if applicable |
 | `timeline` |  |
 
 Operations: Load.
@@ -275,9 +275,9 @@ Create an instance: `all = client.All`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cases` | `Hash` |  |
-| `deaths` | `Hash` |  |
-| `recovered` | `Hash` |  |
+| `cases` | `Hash` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `Hash` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `Hash` | Historical recovered data with dates as keys and recovery counts as values |
 
 #### Example: Load
 
@@ -301,8 +301,8 @@ Create an instance: `historical = client.Historical`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `String` |  |
-| `province` | `Array` |  |
+| `country` | `String` | Country name |
+| `province` | `Array` | List of provinces/states if applicable |
 | `timeline` | `Hash` |  |
 
 #### Example: Load

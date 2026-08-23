@@ -8,11 +8,13 @@ main: kit: entity: historical: {
     {
       name: "country"
       req: false
+      short: "Country name"
       type: "`$STRING`"
     }
     {
       name: "province"
       req: false
+      short: "List of provinces/states if applicable"
       type: "`$ARRAY`"
     }
     {

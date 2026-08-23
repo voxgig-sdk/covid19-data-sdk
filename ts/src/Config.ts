@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Covid19Data',
+        slug: "covid19-data",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,14 +70,17 @@ class Config {
       "fields": [
         {
           "name": "cases",
+          "short": "Historical cases data with dates as keys and case counts as values",
           "type": "`$OBJECT`"
         },
         {
           "name": "deaths",
+          "short": "Historical deaths data with dates as keys and death counts as values",
           "type": "`$OBJECT`"
         },
         {
           "name": "recovered",
+          "short": "Historical recovered data with dates as keys and recovery counts as values",
           "type": "`$OBJECT`"
         }
       ],
@@ -116,10 +130,12 @@ class Config {
       "fields": [
         {
           "name": "country",
+          "short": "Country name",
           "type": "`$STRING`"
         },
         {
           "name": "province",
+          "short": "List of provinces/states if applicable",
           "type": "`$ARRAY`"
         },
         {

@@ -97,9 +97,9 @@ all = client.All
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `Hash` | No |  |
-| `deaths` | `Hash` | No |  |
-| `recovered` | `Hash` | No |  |
+| `cases` | `Hash` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `Hash` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `Hash` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -151,8 +151,8 @@ historical = client.Historical
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `String` | No |  |
-| `province` | `Array` | No |  |
+| `country` | `String` | No | Country name |
+| `province` | `Array` | No | List of provinces/states if applicable |
 | `timeline` | `Hash` | No |  |
 
 ### Operations

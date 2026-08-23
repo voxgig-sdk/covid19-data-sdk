@@ -6,7 +6,7 @@ The Golang SDK for the Covid19Data API — an entity-oriented client using stand
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.All(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -259,9 +259,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"cases"` |  |
-| `"deaths"` |  |
-| `"recovered"` |  |
+| `"cases"` | Historical cases data with dates as keys and case counts as values |
+| `"deaths"` | Historical deaths data with dates as keys and death counts as values |
+| `"recovered"` | Historical recovered data with dates as keys and recovery counts as values |
 
 Operations: Load.
 
@@ -271,8 +271,8 @@ API path: `/historical/all`
 
 | Field | Description |
 | --- | --- |
-| `"country"` |  |
-| `"province"` |  |
+| `"country"` | Country name |
+| `"province"` | List of provinces/states if applicable |
 | `"timeline"` |  |
 
 Operations: Load.
@@ -298,9 +298,9 @@ Create an instance: `all := client.All(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cases` | `map[string]any` |  |
-| `deaths` | `map[string]any` |  |
-| `recovered` | `map[string]any` |  |
+| `cases` | `map[string]any` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `map[string]any` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `map[string]any` | Historical recovered data with dates as keys and recovery counts as values |
 
 #### Example: Load
 
@@ -327,8 +327,8 @@ Create an instance: `historical := client.Historical(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `province` | `[]any` |  |
+| `country` | `string` | Country name |
+| `province` | `[]any` | List of provinces/states if applicable |
 | `timeline` | `map[string]any` |  |
 
 #### Example: Load

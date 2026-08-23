@@ -128,9 +128,9 @@ const all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `Record<string, any>` | No |  |
-| `deaths` | `Record<string, any>` | No |  |
-| `recovered` | `Record<string, any>` | No |  |
+| `cases` | `Record<string, any>` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `Record<string, any>` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `Record<string, any>` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -180,8 +180,8 @@ const historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | No |  |
-| `province` | `any[]` | No |  |
+| `country` | `string` | No | Country name |
+| `province` | `any[]` | No | List of provinces/states if applicable |
 | `timeline` | `Record<string, any>` | No |  |
 
 ### Operations

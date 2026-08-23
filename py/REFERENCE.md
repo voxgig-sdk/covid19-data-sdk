@@ -91,9 +91,9 @@ all = client.All()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cases` | `dict` | No |  |
-| `deaths` | `dict` | No |  |
-| `recovered` | `dict` | No |  |
+| `cases` | `dict` | No | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `dict` | No | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `dict` | No | Historical recovered data with dates as keys and recovery counts as values |
 
 ### Operations
 
@@ -144,8 +144,8 @@ historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `str` | No |  |
-| `province` | `list` | No |  |
+| `country` | `str` | No | Country name |
+| `province` | `list` | No | List of provinces/states if applicable |
 | `timeline` | `dict` | No |  |
 
 ### Operations

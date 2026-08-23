@@ -242,9 +242,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `cases` |  |
-| `deaths` |  |
-| `recovered` |  |
+| `cases` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | Historical recovered data with dates as keys and recovery counts as values |
 
 Operations: Load.
 
@@ -254,8 +254,8 @@ API path: `/historical/all`
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `province` |  |
+| `country` | Country name |
+| `province` | List of provinces/states if applicable |
 | `timeline` |  |
 
 Operations: Load.
@@ -281,9 +281,9 @@ Create an instance: `all = client.All()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cases` | `dict` |  |
-| `deaths` | `dict` |  |
-| `recovered` | `dict` |  |
+| `cases` | `dict` | Historical cases data with dates as keys and case counts as values |
+| `deaths` | `dict` | Historical deaths data with dates as keys and death counts as values |
+| `recovered` | `dict` | Historical recovered data with dates as keys and recovery counts as values |
 
 #### Example: Load
 
@@ -306,8 +306,8 @@ Create an instance: `historical = client.Historical()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `str` |  |
-| `province` | `list` |  |
+| `country` | `str` | Country name |
+| `province` | `list` | List of provinces/states if applicable |
 | `timeline` | `dict` |  |
 
 #### Example: Load
