@@ -59,9 +59,12 @@ describe('HistoricalEntity', async () => {
 
     let historical_ref01_data = Object.values(setup.data.existing.historical)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const historical_ref01_ent = client.Historical()
+    const historical_ref01_match_dt0: any = {}
+    historical_ref01_match_dt0.id = historical_ref01_data.id
+    const historical_ref01_data_dt0 = (await historical_ref01_ent.load(historical_ref01_match_dt0)).data()
+    assert(historical_ref01_data_dt0.id === historical_ref01_data.id)
 
 
   })

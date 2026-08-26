@@ -156,6 +156,7 @@ fmt.Println(historical.GetName()) // "historical"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `string` | No | Country name |
+| `id` | `string` | No |  |
 | `province` | `[]any` | No | List of provinces/states if applicable |
 | `timeline` | `map[string]any` | No |  |
 

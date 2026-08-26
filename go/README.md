@@ -272,6 +272,7 @@ API path: `/historical/all`
 | Field | Description |
 | --- | --- |
 | `"country"` | Country name |
+| `"id"` |  |
 | `"province"` | List of provinces/states if applicable |
 | `"timeline"` |  |
 
@@ -328,6 +329,7 @@ Create an instance: `historical := client.Historical(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `country` | `string` | Country name |
+| `id` | `string` |  |
 | `province` | `[]any` | List of provinces/states if applicable |
 | `timeline` | `map[string]any` |  |
 

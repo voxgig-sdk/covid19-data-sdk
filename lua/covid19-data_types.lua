@@ -18,6 +18,7 @@
 
 ---@class Historical
 ---@field country? string
+---@field id? string
 ---@field province? table
 ---@field timeline? table
 

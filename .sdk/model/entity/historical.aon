@@ -12,6 +12,11 @@ main: kit: entity: historical: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "province"
       req: false
       short: "List of provinces/states if applicable"
@@ -23,6 +28,11 @@ main: kit: entity: historical: {
       type: "`$OBJECT`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "historical"
   op: {

@@ -151,6 +151,7 @@ $historical = $client->Historical();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `string` | No | Country name |
+| `id` | `string` | No |  |
 | `province` | `array` | No | List of provinces/states if applicable |
 | `timeline` | `array` | No |  |
 

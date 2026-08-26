@@ -42,6 +42,7 @@ class Covid19DataConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -120,6 +121,10 @@ class Covid19DataConfig
             [
               'name' => 'country',
               'short' => 'Country name',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

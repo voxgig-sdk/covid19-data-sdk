@@ -47,6 +47,9 @@ AllLoadMatch = Struct.new(
 # @!attribute [rw] country
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] province
 #   @return [Array, nil]
 #
@@ -54,6 +57,7 @@ AllLoadMatch = Struct.new(
 #   @return [Hash, nil]
 Historical = Struct.new(
   :country,
+  :id,
   :province,
   :timeline,
   keyword_init: true

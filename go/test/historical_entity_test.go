@@ -61,13 +61,19 @@ func TestHistoricalEntity(t *testing.T) {
 
 		// LOAD
 		historicalRef01Ent := client.Historical(nil)
-		historicalRef01MatchDt0 := map[string]any{}
+		historicalRef01MatchDt0 := map[string]any{
+			"id": historicalRef01Data["id"],
+		}
 		historicalRef01DataDt0Loaded, err := historicalRef01Ent.Load(historicalRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if historicalRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		historicalRef01DataDt0LoadResult := core.ToMapAny(entityData(historicalRef01DataDt0Loaded))
+		if historicalRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if historicalRef01DataDt0LoadResult["id"] != historicalRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

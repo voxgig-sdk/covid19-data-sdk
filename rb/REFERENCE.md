@@ -152,6 +152,7 @@ historical = client.Historical
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `String` | No | Country name |
+| `id` | `String` | No |  |
 | `province` | `Array` | No | List of provinces/states if applicable |
 | `timeline` | `Hash` | No |  |
 

@@ -145,6 +145,7 @@ historical = client.Historical()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `str` | No | Country name |
+| `id` | `str` | No |  |
 | `province` | `list` | No | List of provinces/states if applicable |
 | `timeline` | `dict` | No |  |
 

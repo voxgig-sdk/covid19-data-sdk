@@ -19,6 +19,7 @@ export interface AllLoadMatch {
 
 export interface Historical {
   country?: string
+  id?: string
   province?: any[]
   timeline?: Record<string, any>
 }

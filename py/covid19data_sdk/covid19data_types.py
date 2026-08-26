@@ -30,6 +30,7 @@ class AllLoadMatch(TypedDict, total=False):
 
 class Historical(TypedDict, total=False):
     country: str
+    id: str
     province: list
     timeline: dict
 

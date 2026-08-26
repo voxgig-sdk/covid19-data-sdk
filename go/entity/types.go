@@ -29,6 +29,7 @@ type AllLoadMatch struct {
 // Historical is the typed data model for the historical entity.
 type Historical struct {
 	Country *string `json:"country,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Province *[]any `json:"province,omitempty"`
 	Timeline *map[string]any `json:"timeline,omitempty"`
 }

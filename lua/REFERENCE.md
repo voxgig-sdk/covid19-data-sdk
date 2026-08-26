@@ -149,6 +149,7 @@ local historical = client:Historical(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `string` | No | Country name |
+| `id` | `string` | No |  |
 | `province` | `table` | No | List of provinces/states if applicable |
 | `timeline` | `table` | No |  |
 

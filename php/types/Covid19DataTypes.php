@@ -32,6 +32,7 @@ class AllLoadMatch
 class Historical
 {
     public ?string $country = null;
+    public ?string $id = null;
     public ?array $province = null;
     public ?array $timeline = null;
 }

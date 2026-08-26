@@ -28,6 +28,7 @@ module Covid19DataConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -106,6 +107,10 @@ module Covid19DataConfig
             {
               "name" => "country",
               "short" => "Country name",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

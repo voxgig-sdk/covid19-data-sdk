@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -115,6 +116,10 @@ def make_config():
           {
             "name": "country",
             "short": "Country name",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

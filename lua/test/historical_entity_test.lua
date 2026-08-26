@@ -44,10 +44,14 @@ describe("HistoricalEntity", function()
 
     -- LOAD
     local historical_ref01_ent = client:Historical(nil)
-    local historical_ref01_match_dt0 = {}
+    local historical_ref01_match_dt0 = {
+      id = historical_ref01_data["id"],
+    }
     local historical_ref01_data_dt0_loaded, err = historical_ref01_ent:load(historical_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(historical_ref01_data_dt0_loaded)
+    local historical_ref01_data_dt0_load_result = helpers.to_map(type(historical_ref01_data_dt0_loaded) == 'table' and historical_ref01_data_dt0_loaded.data_get and historical_ref01_data_dt0_loaded:data_get() or historical_ref01_data_dt0_loaded)
+    assert.is_not_nil(historical_ref01_data_dt0_load_result)
+    assert.are.equal(historical_ref01_data_dt0_load_result["id"], historical_ref01_data["id"])
 
   end)
 end)
