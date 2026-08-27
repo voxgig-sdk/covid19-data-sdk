@@ -23,9 +23,7 @@ class All(TypedDict, total=False):
 
 
 class AllLoadMatch(TypedDict, total=False):
-    cases: dict
-    deaths: dict
-    recovered: dict
+    lastday: str
 
 
 class Historical(TypedDict, total=False):
@@ -35,5 +33,9 @@ class Historical(TypedDict, total=False):
     timeline: dict
 
 
-class HistoricalLoadMatch(TypedDict):
+class HistoricalLoadMatchRequired(TypedDict):
     id: str
+
+
+class HistoricalLoadMatch(HistoricalLoadMatchRequired, total=False):
+    lastday: str

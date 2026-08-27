@@ -23,9 +23,7 @@ class All
 /** Request payload for All#load. */
 class AllLoadMatch
 {
-    public ?array $cases = null;
-    public ?array $deaths = null;
-    public ?array $recovered = null;
+    public ?string $lastday = null;
 }
 
 /** Historical entity data model. */
@@ -41,5 +39,6 @@ class Historical
 class HistoricalLoadMatch
 {
     public string $id;
+    public ?string $lastday = null;
 }
 

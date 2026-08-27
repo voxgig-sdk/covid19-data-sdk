@@ -27,18 +27,10 @@ All = Struct.new(
 
 # Request payload for All#load.
 #
-# @!attribute [rw] cases
-#   @return [Hash, nil]
-#
-# @!attribute [rw] deaths
-#   @return [Hash, nil]
-#
-# @!attribute [rw] recovered
-#   @return [Hash, nil]
+# @!attribute [rw] lastday
+#   @return [String, nil]
 AllLoadMatch = Struct.new(
-  :cases,
-  :deaths,
-  :recovered,
+  :lastday,
   keyword_init: true
 )
 
@@ -67,8 +59,12 @@ Historical = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] lastday
+#   @return [String, nil]
 HistoricalLoadMatch = Struct.new(
   :id,
+  :lastday,
   keyword_init: true
 )
 

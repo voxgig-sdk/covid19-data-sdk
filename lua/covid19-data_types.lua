@@ -12,9 +12,7 @@
 ---@field recovered? table
 
 ---@class AllLoadMatch
----@field cases? table
----@field deaths? table
----@field recovered? table
+---@field lastday? string
 
 ---@class Historical
 ---@field country? string
@@ -24,6 +22,7 @@
 
 ---@class HistoricalLoadMatch
 ---@field id string
+---@field lastday? string
 
 local M = {}
 

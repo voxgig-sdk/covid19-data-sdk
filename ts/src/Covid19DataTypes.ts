@@ -12,9 +12,7 @@ export interface All {
 }
 
 export interface AllLoadMatch {
-  cases?: Record<string, any>
-  deaths?: Record<string, any>
-  recovered?: Record<string, any>
+  lastday?: string
 }
 
 export interface Historical {
@@ -26,5 +24,6 @@ export interface Historical {
 
 export interface HistoricalLoadMatch {
   id: string
+  lastday?: string
 }
 

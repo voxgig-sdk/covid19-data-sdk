@@ -21,9 +21,7 @@ type All struct {
 
 // AllLoadMatch is the typed request payload for All.LoadTyped.
 type AllLoadMatch struct {
-	Cases *map[string]any `json:"cases,omitempty"`
-	Deaths *map[string]any `json:"deaths,omitempty"`
-	Recovered *map[string]any `json:"recovered,omitempty"`
+	Lastday *string `json:"lastday,omitempty"`
 }
 
 // Historical is the typed data model for the historical entity.
@@ -37,6 +35,7 @@ type Historical struct {
 // HistoricalLoadMatch is the typed request payload for Historical.LoadTyped.
 type HistoricalLoadMatch struct {
 	Id string `json:"id"`
+	Lastday *string `json:"lastday,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
