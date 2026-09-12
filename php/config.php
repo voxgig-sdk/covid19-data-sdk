@@ -95,9 +95,13 @@ class Covid19DataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/historical/all',
-                  'parts' => [
-                    'historical',
-                    'all',
+                  'segments' => [
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'all',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -107,6 +111,10 @@ class Covid19DataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'historical',
+                    'all',
                   ],
                 ],
               ],
@@ -136,6 +144,10 @@ class Covid19DataConfig
               'name' => 'timeline',
               'type' => '`$OBJECT`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'historical',
           'op' => [
@@ -168,13 +180,17 @@ class Covid19DataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/historical/{country}',
-                  'parts' => [
-                    'historical',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'country' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -186,6 +202,10 @@ class Covid19DataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'historical',
+                    '{id}',
                   ],
                 ],
               ],

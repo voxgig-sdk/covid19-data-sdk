@@ -69,9 +69,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/historical/all",
-                ["parts"] = {
-                  "historical",
-                  "all",
+                ["segments"] = {
+                  {
+                    ["lit"] = "historical",
+                  },
+                  {
+                    ["lit"] = "all",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -81,6 +85,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "historical",
+                  "all",
                 },
               },
             },
@@ -110,6 +118,10 @@ local function make_config()
             ["name"] = "timeline",
             ["type"] = "`$OBJECT`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "historical",
         ["op"] = {
@@ -142,13 +154,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/historical/{country}",
-                ["parts"] = {
-                  "historical",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["country"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "historical",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -160,6 +176,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "historical",
+                  "{id}",
                 },
               },
             },

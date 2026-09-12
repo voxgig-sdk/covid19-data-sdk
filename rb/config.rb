@@ -81,9 +81,13 @@ module Covid19DataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/historical/all",
-                  "parts" => [
-                    "historical",
-                    "all",
+                  "segments" => [
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "all",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -94,6 +98,10 @@ module Covid19DataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "historical",
+                    "all",
+                  ],
                 },
               ],
             },
@@ -123,6 +131,10 @@ module Covid19DataConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "historical",
           "op" => {
             "load" => {
@@ -154,15 +166,19 @@ module Covid19DataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/historical/{country}",
-                  "parts" => [
-                    "historical",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "country" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -173,6 +189,10 @@ module Covid19DataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "historical",
+                    "{id}",
+                  ],
                 },
               ],
             },

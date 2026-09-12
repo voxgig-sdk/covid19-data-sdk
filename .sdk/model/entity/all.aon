@@ -45,9 +45,13 @@ main: kit: entity: all: {
           }
           method: "GET"
           orig: "/historical/all"
-          parts: [
-            "historical"
-            "all"
+          segments: [
+            {
+              lit: "historical"
+            }
+            {
+              lit: "all"
+            }
           ]
           select: {
             exist: [
