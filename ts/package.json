@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/covid19-data",
+  "name": "@voxgig-sdk/covid19-data-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the COVID-19 Data public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

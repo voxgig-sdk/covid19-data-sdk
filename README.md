@@ -105,7 +105,7 @@ local result, err = client:All():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/covid19-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/covid19-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/covid19-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/covid19-data-sdk/releases) |
 | Python | `voxgig-sdk-covid19-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/covid19-data-sdk/releases) |
 | PHP | `voxgig-sdk/covid19-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/covid19-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/covid19-data-sdk/go` | `go get github.com/voxgig-sdk/covid19-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:All():load()
 ### TypeScript
 
 ```ts
-import { Covid19DataSDK } from '@voxgig-sdk/covid19-data'
+import { Covid19DataSDK } from '@voxgig-sdk/covid19-data-sdk'
 
 const client = new Covid19DataSDK()
 

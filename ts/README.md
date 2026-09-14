@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { Covid19DataSDK } from '@voxgig-sdk/covid19-data'
+import { Covid19DataSDK } from '@voxgig-sdk/covid19-data-sdk'
 
 const client = new Covid19DataSDK()
 ```
@@ -445,7 +445,7 @@ covid19-data/
 Import the SDK from the package root:
 
 ```ts
-import { Covid19DataSDK } from '@voxgig-sdk/covid19-data'
+import { Covid19DataSDK } from '@voxgig-sdk/covid19-data-sdk'
 ```
 
 ### Entity state
