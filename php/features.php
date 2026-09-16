@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Covid19Data SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class Covid19DataFeatures
@@ -14,8 +17,14 @@ class Covid19DataFeatures
         switch ($name) {
             case "base":
                 return new Covid19DataBaseFeature();
+            case "ratelimit":
+                return new Covid19DataRatelimitFeature();
+            case "retry":
+                return new Covid19DataRetryFeature();
             case "test":
                 return new Covid19DataTestFeature();
+            case "timeout":
+                return new Covid19DataTimeoutFeature();
             default:
                 return new Covid19DataBaseFeature();
         }
@@ -31,7 +40,10 @@ class Covid19DataFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

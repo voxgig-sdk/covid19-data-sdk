@@ -62,6 +62,12 @@ main: kit: entity: historical: {
               }
             ]
           }
+          contract: {
+            id: "GET /historical/{country}"
+            json: "{\"operationId\":\"getHistoricalCountry\",\"parameters\":[{\"description\":\"Country name or ISO code\",\"in\":\"path\",\"name\":\"country\",\"required\":true,\"schema\":{\"example\":\"USA\",\"type\":\"string\"}},{\"description\":\"Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)\",\"in\":\"query\",\"name\":\"lastdays\",\"required\":false,\"schema\":{\"default\":\"30\",\"example\":\"all\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Historical COVID-19 data for a specific country\",\"properties\":{\"country\":{\"description\":\"Country name\",\"example\":\"USA\",\"type\":\"string\"},\"province\":{\"description\":\"List of provinces/states if applicable\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"timeline\":{\"properties\":{\"cases\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical cases data\",\"type\":\"object\"},\"deaths\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical deaths data\",\"type\":\"object\"},\"recovered\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical recovered data\",\"type\":\"object\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with country historical data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Error response\",\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"Invalid parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Country not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/historical/{country}"
           rename: {

@@ -29,8 +29,17 @@ func init() {
 	core.NewBaseFeatureFunc = func() core.Feature {
 		return feature.NewBaseFeature()
 	}
+	core.NewRatelimitFeatureFunc = func() core.Feature {
+		return feature.NewRatelimitFeature()
+	}
+	core.NewRetryFeatureFunc = func() core.Feature {
+		return feature.NewRetryFeature()
+	}
 	core.NewTestFeatureFunc = func() core.Feature {
 		return feature.NewTestFeature()
+	}
+	core.NewTimeoutFeatureFunc = func() core.Feature {
+		return feature.NewTimeoutFeature()
 	}
 	core.NewAllEntityFunc = func(client *core.Covid19DataSDK, entopts map[string]any) core.Covid19DataEntity {
 		return entity.NewAllEntity(client, entopts)
@@ -58,4 +67,7 @@ var SharedConfig = core.SharedConfig
 func New() *Covid19DataSDK  { return NewCovid19DataSDK(nil) }
 func Test() *Covid19DataSDK { return TestSDK(nil, nil) }
 var NewBaseFeature = feature.NewBaseFeature
+var NewRatelimitFeature = feature.NewRatelimitFeature
+var NewRetryFeature = feature.NewRetryFeature
 var NewTestFeature = feature.NewTestFeature
+var NewTimeoutFeature = feature.NewTimeoutFeature

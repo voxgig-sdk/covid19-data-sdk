@@ -29,5 +29,132 @@
         "recovered": {}
       }
     }
+  },
+  "requests": {
+    "GET /historical/all": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHistoricalAll",
+        "parameters": [
+          {
+            "description": "Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)",
+            "in": "query",
+            "name": "lastdays",
+            "required": false,
+            "schema": {
+              "default": "30",
+              "example": "all",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "cases": {
+                    "1/22/20": 557,
+                    "1/23/20": 657,
+                    "1/24/20": 944,
+                    "1/25/20": 1437
+                  },
+                  "deaths": {
+                    "1/22/20": 17,
+                    "1/23/20": 18,
+                    "1/24/20": 26,
+                    "1/25/20": 42
+                  },
+                  "recovered": {
+                    "1/22/20": 30,
+                    "1/23/20": 32,
+                    "1/24/20": 36,
+                    "1/25/20": 39
+                  }
+                },
+                "schema": {
+                  "description": "Historical COVID-19 data for all countries combined",
+                  "properties": {
+                    "cases": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "Historical cases data with dates as keys and case counts as values",
+                      "example": {
+                        "1/22/20": 557,
+                        "1/23/20": 657
+                      },
+                      "type": "object"
+                    },
+                    "deaths": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "Historical deaths data with dates as keys and death counts as values",
+                      "example": {
+                        "1/22/20": 17,
+                        "1/23/20": 18
+                      },
+                      "type": "object"
+                    },
+                    "recovered": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "Historical recovered data with dates as keys and recovery counts as values",
+                      "example": {
+                        "1/22/20": 30,
+                        "1/23/20": 32
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with historical COVID-19 data"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Error response",
+                  "properties": {
+                    "message": {
+                      "description": "Error message",
+                      "example": "Invalid parameter",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - Invalid parameters"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Error response",
+                  "properties": {
+                    "message": {
+                      "description": "Error message",
+                      "example": "Invalid parameter",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
