@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicAllFlow.aon"
-@"BasicHistoricalFlow.aon"
+@"./BasicAllFlow.aon"
+@"./BasicHistoricalFlow.aon"
