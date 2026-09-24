@@ -1,0 +1,80 @@
+# Entity: all
+
+main: kit: entity: all: {
+
+  alias: field: {}
+
+  fields: {
+    cases: {
+      h: "Cases"
+      n: "cases"
+      r: false
+      sh: "Historical cases data with dates as keys and case counts as values"
+      t: "`$OBJECT`"
+    }
+    deaths: {
+      h: "Deaths"
+      n: "deaths"
+      r: false
+      sh: "Historical deaths data with dates as keys and death counts as values"
+      t: "`$OBJECT`"
+    }
+    recovered: {
+      h: "Recovered"
+      n: "recovered"
+      r: false
+      sh: "Historical recovered data with dates as keys and recovery counts as values"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "all"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /historical/all"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "all"
+                k: "query"
+                n: "lastday"
+                or: "lastday"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/historical/all"
+          q: {
+            exist: [
+              "lastday"
+            ]
+          }
+          s: [
+            {
+              lit: "historical"
+            }
+            {
+              lit: "all"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -92,18 +92,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cases",
-						"short": "Historical cases data with dates as keys and case counts as values",
+						"title": "Cases",
 						"type": "`$OBJECT`",
+						"short": "Historical cases data with dates as keys and case counts as values",
 					},
 					map[string]any{
 						"name": "deaths",
-						"short": "Historical deaths data with dates as keys and death counts as values",
+						"title": "Deaths",
 						"type": "`$OBJECT`",
+						"short": "Historical deaths data with dates as keys and death counts as values",
 					},
 					map[string]any{
 						"name": "recovered",
-						"short": "Historical recovered data with dates as keys and recovery counts as values",
+						"title": "Recovered",
 						"type": "`$OBJECT`",
+						"short": "Historical recovered data with dates as keys and recovery counts as values",
 					},
 				},
 				"name": "all",
@@ -113,17 +116,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "all",
-											"kind": "query",
-											"name": "lastday",
-											"orig": "lastday",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/historical/all",
@@ -135,18 +127,30 @@ func MakeConfig() map[string]any {
 										"lit": "all",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"lastday",
-									},
+								"parts": []any{
+									"historical",
+									"all",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"historical",
-									"all",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "lastday",
+											"orig": "lastday",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "all",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"lastday",
+									},
 								},
 							},
 						},
@@ -160,20 +164,24 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "country",
-						"short": "Country name",
+						"title": "Country",
 						"type": "`$STRING`",
+						"short": "Country name",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "province",
-						"short": "List of provinces/states if applicable",
+						"title": "Province",
 						"type": "`$ARRAY`",
+						"short": "List of provinces/states if applicable",
 					},
 					map[string]any{
 						"name": "timeline",
+						"title": "Timeline",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -188,35 +196,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "USA",
-											"kind": "param",
-											"name": "id",
-											"orig": "country",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "all",
-											"kind": "query",
-											"name": "lastday",
-											"orig": "lastday",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/historical/{country}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"country": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "historical",
@@ -225,19 +207,45 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"lastday",
+								"parts": []any{
+									"historical",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"country": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"historical",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "USA",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "lastday",
+											"orig": "lastday",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "all",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"lastday",
+									},
 								},
 							},
 						},

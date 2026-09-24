@@ -100,18 +100,21 @@ module Covid19DataConfig
           "fields" => [
             {
               "name" => "cases",
-              "short" => "Historical cases data with dates as keys and case counts as values",
+              "title" => "Cases",
               "type" => "`$OBJECT`",
+              "short" => "Historical cases data with dates as keys and case counts as values",
             },
             {
               "name" => "deaths",
-              "short" => "Historical deaths data with dates as keys and death counts as values",
+              "title" => "Deaths",
               "type" => "`$OBJECT`",
+              "short" => "Historical deaths data with dates as keys and death counts as values",
             },
             {
               "name" => "recovered",
-              "short" => "Historical recovered data with dates as keys and recovery counts as values",
+              "title" => "Recovered",
               "type" => "`$OBJECT`",
+              "short" => "Historical recovered data with dates as keys and recovery counts as values",
             },
           ],
           "name" => "all",
@@ -121,17 +124,6 @@ module Covid19DataConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "all",
-                        "kind" => "query",
-                        "name" => "lastday",
-                        "orig" => "lastday",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/historical/all",
@@ -143,19 +135,31 @@ module Covid19DataConfig
                       "lit" => "all",
                     },
                   ],
+                  "parts" => [
+                    "historical",
+                    "all",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "lastday",
+                        "orig" => "lastday",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "all",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "lastday",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "historical",
-                    "all",
-                  ],
                 },
               ],
             },
@@ -168,20 +172,24 @@ module Covid19DataConfig
           "fields" => [
             {
               "name" => "country",
-              "short" => "Country name",
+              "title" => "Country",
               "type" => "`$STRING`",
+              "short" => "Country name",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "province",
-              "short" => "List of provinces/states if applicable",
+              "title" => "Province",
               "type" => "`$ARRAY`",
+              "short" => "List of provinces/states if applicable",
             },
             {
               "name" => "timeline",
+              "title" => "Timeline",
               "type" => "`$OBJECT`",
             },
           ],
@@ -196,35 +204,9 @@ module Covid19DataConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "USA",
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "country",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "example" => "all",
-                        "kind" => "query",
-                        "name" => "lastday",
-                        "orig" => "lastday",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/historical/{country}",
-                  "rename" => {
-                    "param" => {
-                      "country" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "historical",
@@ -233,20 +215,46 @@ module Covid19DataConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "historical",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "country" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "country",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => "USA",
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "lastday",
+                        "orig" => "lastday",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "all",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                       "lastday",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "historical",
-                    "{id}",
-                  ],
                 },
               ],
             },

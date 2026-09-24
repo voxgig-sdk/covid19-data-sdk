@@ -24,35 +24,104 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "all": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "cases",
-              "req": false,
-              "short": "Historical cases data with dates as keys and case counts as values",
-              "type": "`$OBJECT`"
+          "fields": {
+            "cases": {
+              "a": true,
+              "h": "Cases",
+              "n": "cases",
+              "r": false,
+              "sh": "Historical cases data with dates as keys and case counts as values",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "deaths",
-              "req": false,
-              "short": "Historical deaths data with dates as keys and death counts as values",
-              "type": "`$OBJECT`"
+            "deaths": {
+              "a": true,
+              "h": "Deaths",
+              "n": "deaths",
+              "r": false,
+              "sh": "Historical deaths data with dates as keys and death counts as values",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "recovered",
-              "req": false,
-              "short": "Historical recovered data with dates as keys and recovery counts as values",
-              "type": "`$OBJECT`"
+            "recovered": {
+              "a": true,
+              "h": "Recovered",
+              "n": "recovered",
+              "r": false,
+              "sh": "Historical recovered data with dates as keys and recovery counts as values",
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "name": "all",
           "op": {
             "load": {
@@ -60,30 +129,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /historical/all",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "all",
-                        "kind": "query",
-                        "name": "lastday",
-                        "orig": "lastday",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "all",
+                        "k": "query",
+                        "n": "lastday",
+                        "or": "lastday",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /historical/all",
-                    "json": "{\"operationId\":\"getHistoricalAll\",\"parameters\":[{\"description\":\"Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)\",\"in\":\"query\",\"name\":\"lastdays\",\"required\":false,\"schema\":{\"default\":\"30\",\"example\":\"all\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"cases\":{\"1/22/20\":557,\"1/23/20\":657,\"1/24/20\":944,\"1/25/20\":1437},\"deaths\":{\"1/22/20\":17,\"1/23/20\":18,\"1/24/20\":26,\"1/25/20\":42},\"recovered\":{\"1/22/20\":30,\"1/23/20\":32,\"1/24/20\":36,\"1/25/20\":39}},\"schema\":{\"description\":\"Historical COVID-19 data for all countries combined\",\"properties\":{\"cases\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical cases data with dates as keys and case counts as values\",\"example\":{\"1/22/20\":557,\"1/23/20\":657},\"type\":\"object\"},\"deaths\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical deaths data with dates as keys and death counts as values\",\"example\":{\"1/22/20\":17,\"1/23/20\":18},\"type\":\"object\"},\"recovered\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical recovered data with dates as keys and recovery counts as values\",\"example\":{\"1/22/20\":30,\"1/23/20\":32},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with historical COVID-19 data\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Error response\",\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"Invalid parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Error response\",\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"Invalid parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/historical/all",
+                  "q": {
+                    "exist": [
+                      "lastday"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/historical/all",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "historical"
                     },
@@ -91,12 +165,7 @@
                       "lit": "all"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "lastday"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -113,34 +182,38 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "country",
-              "req": false,
-              "short": "Country name",
-              "type": "`$STRING`"
+          "fields": {
+            "country": {
+              "a": true,
+              "h": "Country",
+              "n": "country",
+              "r": false,
+              "sh": "Country name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "province",
-              "req": false,
-              "short": "List of provinces/states if applicable",
-              "type": "`$ARRAY`"
+            "province": {
+              "a": true,
+              "h": "Province",
+              "n": "province",
+              "r": false,
+              "sh": "List of provinces/states if applicable",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "timeline",
-              "req": false,
-              "type": "`$OBJECT`"
+            "timeline": {
+              "a": true,
+              "h": "Timeline",
+              "n": "timeline",
+              "r": false,
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -152,46 +225,51 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /historical/{country}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "USA",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "country",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "USA",
+                        "k": "param",
+                        "n": "id",
+                        "or": "country",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": "all",
-                        "kind": "query",
-                        "name": "lastday",
-                        "orig": "lastday",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "all",
+                        "k": "query",
+                        "n": "lastday",
+                        "or": "lastday",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /historical/{country}",
-                    "json": "{\"operationId\":\"getHistoricalCountry\",\"parameters\":[{\"description\":\"Country name or ISO code\",\"in\":\"path\",\"name\":\"country\",\"required\":true,\"schema\":{\"example\":\"USA\",\"type\":\"string\"}},{\"description\":\"Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)\",\"in\":\"query\",\"name\":\"lastdays\",\"required\":false,\"schema\":{\"default\":\"30\",\"example\":\"all\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Historical COVID-19 data for a specific country\",\"properties\":{\"country\":{\"description\":\"Country name\",\"example\":\"USA\",\"type\":\"string\"},\"province\":{\"description\":\"List of provinces/states if applicable\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"timeline\":{\"properties\":{\"cases\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical cases data\",\"type\":\"object\"},\"deaths\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical deaths data\",\"type\":\"object\"},\"recovered\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Historical recovered data\",\"type\":\"object\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with country historical data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Error response\",\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"Invalid parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Country not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/historical/{country}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "lastday"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/historical/{country}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "country": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "historical"
                     },
@@ -199,13 +277,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "lastday"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -634,17 +706,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "all_ref01",
                 "srcdatavar": "all_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -664,19 +736,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "historical_ref01",
                 "srcdatavar": "historical_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "historical01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

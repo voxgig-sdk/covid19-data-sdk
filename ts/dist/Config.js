@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -115,18 +108,21 @@ class Config {
             "fields": [
                 {
                     "name": "cases",
-                    "short": "Historical cases data with dates as keys and case counts as values",
-                    "type": "`$OBJECT`"
+                    "title": "Cases",
+                    "type": "`$OBJECT`",
+                    "short": "Historical cases data with dates as keys and case counts as values"
                 },
                 {
                     "name": "deaths",
-                    "short": "Historical deaths data with dates as keys and death counts as values",
-                    "type": "`$OBJECT`"
+                    "title": "Deaths",
+                    "type": "`$OBJECT`",
+                    "short": "Historical deaths data with dates as keys and death counts as values"
                 },
                 {
                     "name": "recovered",
-                    "short": "Historical recovered data with dates as keys and recovery counts as values",
-                    "type": "`$OBJECT`"
+                    "title": "Recovered",
+                    "type": "`$OBJECT`",
+                    "short": "Historical recovered data with dates as keys and recovery counts as values"
                 }
             ],
             "name": "all",
@@ -136,17 +132,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "all",
-                                        "kind": "query",
-                                        "name": "lastday",
-                                        "orig": "lastday",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/historical/all",
@@ -158,19 +143,31 @@ class Config {
                                     "lit": "all"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "lastday"
-                                ]
-                            },
+                            "parts": [
+                                "historical",
+                                "all"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "historical",
-                                "all"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "lastday",
+                                        "orig": "lastday",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "all"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "lastday"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -183,20 +180,24 @@ class Config {
             "fields": [
                 {
                     "name": "country",
-                    "short": "Country name",
-                    "type": "`$STRING`"
+                    "title": "Country",
+                    "type": "`$STRING`",
+                    "short": "Country name"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "province",
-                    "short": "List of provinces/states if applicable",
-                    "type": "`$ARRAY`"
+                    "title": "Province",
+                    "type": "`$ARRAY`",
+                    "short": "List of provinces/states if applicable"
                 },
                 {
                     "name": "timeline",
+                    "title": "Timeline",
                     "type": "`$OBJECT`"
                 }
             ],
@@ -211,35 +212,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": "USA",
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "country",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "example": "all",
-                                        "kind": "query",
-                                        "name": "lastday",
-                                        "orig": "lastday",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/historical/{country}",
-                            "rename": {
-                                "param": {
-                                    "country": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "historical"
@@ -248,20 +223,46 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id",
-                                    "lastday"
-                                ]
+                            "parts": [
+                                "historical",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "country": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "historical",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "country",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": "USA"
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "lastday",
+                                        "orig": "lastday",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "all"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id",
+                                    "lastday"
+                                ]
+                            }
                         }
                     ]
                 }
