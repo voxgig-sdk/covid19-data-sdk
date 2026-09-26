@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "voxgig-sdk-covid19-data"
+name = "voxgig-sdk-covid19-data-sdk"
 version = "0.0.1"
 description = "Unofficial generated Python SDK for the COVID-19 Data public API. Not affiliated with or endorsed by the upstream API provider."
 readme = "README.md"
