@@ -45,7 +45,7 @@ main: kit: entity: all: {
                 ex: "all"
                 k: "query"
                 n: "lastday"
-                or: "lastday"
+                or: "lastdays"
                 r: false
                 t: "`$STRING`"
               }

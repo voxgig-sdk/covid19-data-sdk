@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 Covid19DataUtility::setRegistrar(function (Covid19DataUtility $u): void {
     $u->clean = [Covid19DataClean::class, 'call'];
+    $u->clean_add = [Covid19DataClean::class, 'add'];
+    $u->clean_explain = [Covid19DataDone::class, 'clean_explain'];
     $u->done = [Covid19DataDone::class, 'call'];
     $u->make_error = [Covid19DataMakeError::class, 'call'];
     $u->feature_add = [Covid19DataFeatureAdd::class, 'call'];

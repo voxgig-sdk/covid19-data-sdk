@@ -148,7 +148,7 @@ module Covid19DataConfig
                     "query" => [
                       {
                         "name" => "lastday",
-                        "orig" => "lastday",
+                        "orig" => "lastdays",
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "all",
@@ -242,7 +242,7 @@ module Covid19DataConfig
                     "query" => [
                       {
                         "name" => "lastday",
-                        "orig" => "lastday",
+                        "orig" => "lastdays",
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "all",

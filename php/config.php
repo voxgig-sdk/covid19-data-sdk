@@ -162,7 +162,7 @@ class Covid19DataConfig
                     'query' => [
                       [
                         'name' => 'lastday',
-                        'orig' => 'lastday',
+                        'orig' => 'lastdays',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'example' => 'all',
@@ -256,7 +256,7 @@ class Covid19DataConfig
                     'query' => [
                       [
                         'name' => 'lastday',
-                        'orig' => 'lastday',
+                        'orig' => 'lastdays',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'example' => 'all',

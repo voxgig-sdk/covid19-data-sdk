@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 Covid19DataUtility.registrar = ->(u) {
   u.clean = Covid19DataUtilities::Clean
+  u.clean_add = Covid19DataUtilities::CleanAdd
+  u.clean_explain = Covid19DataUtilities::CleanExplain
   u.done = Covid19DataUtilities::Done
   u.make_error = Covid19DataUtilities::MakeError
   u.feature_add = Covid19DataUtilities::FeatureAdd

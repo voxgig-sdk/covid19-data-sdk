@@ -140,7 +140,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "lastday",
-											"orig": "lastday",
+											"orig": "lastdays",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "all",
@@ -234,7 +234,7 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "lastday",
-											"orig": "lastday",
+											"orig": "lastdays",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "all",
