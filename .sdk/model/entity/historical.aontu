@@ -76,13 +76,16 @@ main: kit: entity: historical: {
           q: {
             exist: [
               "id"
-              "lastday"
             ]
           }
           r: {
             param: {
               country: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

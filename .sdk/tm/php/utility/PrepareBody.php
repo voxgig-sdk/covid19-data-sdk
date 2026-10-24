@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // Covid19Data SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class Covid19DataPrepareBody
 {
     public static function call(Covid19DataContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (Covid19DataMedia::isRawRequest($ctx->point)) {
+                return Covid19DataMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

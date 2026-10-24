@@ -84,9 +84,12 @@ class HistoricalEntity extends Covid19DataEntityBase_1.Covid19DataEntityBase {
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -98,7 +101,7 @@ class HistoricalEntity extends Covid19DataEntityBase_1.Covid19DataEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Historical> return stays clean under strict null checks.
+                // Promise<HistoricalEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }

@@ -79,6 +79,7 @@ module Covid19DataConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -155,10 +156,10 @@ module Covid19DataConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "lastday",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -252,8 +253,11 @@ module Covid19DataConfig
                   "select" => {
                     "exist" => [
                       "id",
-                      "lastday",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

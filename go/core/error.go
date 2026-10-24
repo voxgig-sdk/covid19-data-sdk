@@ -12,6 +12,8 @@ type Covid19DataError struct {
 	Ctx    *Context `json:"-"`
 	Result any
 	Spec   any
+	// The HTTP status, -1 when there was no response.
+	Status int
 }
 
 func NewCovid19DataError(code string, msg string, ctx *Context) *Covid19DataError {
@@ -21,7 +23,12 @@ func NewCovid19DataError(code string, msg string, ctx *Context) *Covid19DataErro
 		Code:               code,
 		Msg:                msg,
 		Ctx:                ctx,
+		Status:             -1,
 	}
+}
+
+func (e *Covid19DataError) NotFound() bool {
+	return 404 == e.Status
 }
 
 func (e *Covid19DataError) Error() string {
@@ -35,6 +42,7 @@ func (e *Covid19DataError) Record() map[string]any {
 		"sdk":     e.Sdk,
 		"code":    e.Code,
 		"message": e.Msg,
+		"status":  e.Status,
 		"result":  e.Result,
 		"spec":    e.Spec,
 	}

@@ -93,6 +93,7 @@ class Covid19DataConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -169,10 +170,10 @@ class Covid19DataConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'lastday',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -266,8 +267,11 @@ class Covid19DataConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'lastday',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { Covid19DataSDK, BaseFeature, stdutil } from '../../..'
+import { Covid19DataSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('HistoricalEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = Covid19DataSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Historical().load({"id":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COVID19_DATA_TEST_LIVE
@@ -51,7 +63,7 @@ describe('HistoricalEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"country":{"a":true,"h":"Country","n":"country","r":false,"sh":"Country name","t":"`$STRING`","key$":"country","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"province":{"a":true,"h":"Province","n":"province","r":false,"sh":"List of provinces/states if applicable","t":"`$ARRAY`","key$":"province","index$":2},"timeline":{"a":true,"h":"Timeline","n":"timeline","r":false,"t":"`$OBJECT`","key$":"timeline","index$":3}},"id":{"field":"id","name":"id"},"name":"historical","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /historical/{country}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"USA","k":"param","n":"id","or":"country","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":"all","k":"query","n":"lastday","or":"lastdays","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/historical/{country}","q":{"exist":["id","lastday"]},"r":{"param":{"country":"id"}},"s":[{"lit":"historical"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"historical","name__orig":"historical","Name":"Historical","name_":"historical","name-":"historical","NAME":"HISTORICAL","index$":1}, {"active":true,"entity":"historical","key$":"BasicHistoricalFlow","kind":"basic","name":"BasicHistoricalFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"historical_ref01","srcdatavar":"historical_ref01_data","suffix":"_dt0"},"m":{"id":"historical01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-historical_ref01"}}],"index$":0}]}, 'Historical', {"GET /historical/{country}":{"protocol":"http","parameters":[{"name":"country","in":"path","description":"Country name or ISO code","required":true,"schema":{"type":"string","example":"USA"},"index$":0},{"name":"lastdays","in":"query","description":"Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)","required":false,"schema":{"type":"string","default":"30","example":"all"},"index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"country":{"a":true,"h":"Country","n":"country","r":false,"sh":"Country name","t":"`$STRING`","key$":"country","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"province":{"a":true,"h":"Province","n":"province","r":false,"sh":"List of provinces/states if applicable","t":"`$ARRAY`","key$":"province","index$":2},"timeline":{"a":true,"h":"Timeline","n":"timeline","r":false,"t":"`$OBJECT`","key$":"timeline","index$":3}},"id":{"field":"id","name":"id"},"name":"historical","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /historical/{country}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"USA","k":"param","n":"id","or":"country","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":"all","k":"query","n":"lastday","or":"lastdays","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/historical/{country}","q":{"exist":["id"]},"r":{"param":{"country":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"historical"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"historical","name__orig":"historical","Name":"Historical","name_":"historical","name-":"historical","NAME":"HISTORICAL","index$":1}, {"active":true,"entity":"historical","key$":"BasicHistoricalFlow","kind":"basic","name":"BasicHistoricalFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"historical_ref01","srcdatavar":"historical_ref01_data","suffix":"_dt0"},"m":{"id":"historical01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-historical_ref01"}}],"index$":0}]}, 'Historical', {"GET /historical/{country}":{"protocol":"http","parameters":[{"name":"country","in":"path","description":"Country name or ISO code","required":true,"schema":{"type":"string","example":"USA"},"index$":0},{"name":"lastdays","in":"query","description":"Number of days to return. Use 'all' for full historical data, or specify a number (e.g., 30, 7)","required":false,"schema":{"type":"string","default":"30","example":"all"},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -73,6 +85,12 @@ describe('HistoricalEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

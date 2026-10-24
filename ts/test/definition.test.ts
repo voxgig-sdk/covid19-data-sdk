@@ -16,11 +16,21 @@ const PLAN: any[] = [
     "path": "/historical/all",
     "args": [],
     "select": {
-      "lastday": "v1"
+      "lastday": "all"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "lastdays"
+    ],
+    "queryArgs": [
+      {
+        "name": "lastday",
+        "wire": "lastdays"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -60,11 +70,21 @@ const PLAN: any[] = [
       }
     ],
     "select": {
-      "lastday": "v1"
+      "lastday": "all"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "lastdays"
+    ],
+    "queryArgs": [
+      {
+        "name": "lastday",
+        "wire": "lastdays"
+      }
     ],
     "auth": null,
     "status": 200,

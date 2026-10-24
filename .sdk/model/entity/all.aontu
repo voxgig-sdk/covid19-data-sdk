@@ -53,10 +53,9 @@ main: kit: entity: all: {
           }
           m: "GET"
           o: "/historical/all"
-          q: {
-            exist: [
-              "lastday"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

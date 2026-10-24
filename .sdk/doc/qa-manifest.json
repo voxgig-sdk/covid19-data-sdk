@@ -3,5 +3,18 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Country name",
+      "Historical cases data with dates as keys and case counts as values",
+      "Historical deaths data with dates as keys and death counts as values",
+      "Historical recovered data with dates as keys and recovery counts as values",
+      "List of provinces/states if applicable",
+      "Production server",
+      "Successful response with country historical data",
+      "Successful response with historical COVID-19 data",
+      "This API provides comprehensive data on COVID-19 cases, deaths, and recoveries across various dates, offering users access to historical trends and real-time statistics. Users can query the API for specific dates or cumulative figures to analyze the impact of the pandemic over time."
+    ]
+  }
 }
